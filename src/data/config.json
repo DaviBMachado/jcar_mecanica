@@ -1,0 +1,23 @@
+{
+  "oficina": {
+    "nome": "Jcar Mecânica",
+    "cnpj": "00.000.000/0001-00",
+    "anosExperiencia": 15,
+    "garantiaDias": 90
+  },
+  "contato": {
+    "whatsapp": "5511999999999",
+    "mensagemPadrao": "Olá, Jcar! Vi o site de vocês e gostaria de agendar uma avaliação.",
+    "emailRecrutamento": "rh@jcarmecanica.com.br"
+  },
+  "endereco": {
+    "texto": "Rua Exemplo, 123 - Bairro Automotivo, São Paulo - SP",
+    "mapsLink": "https://maps.google.com/?q=..." 
+  },
+  "diferenciais": [
+    "Agendamento personalizado",
+    "Equipamentos de ponta",
+    "Experiência Multimarcas (Populares e Premium)",
+    "Transparência 100% garantida"
+  ]
+}

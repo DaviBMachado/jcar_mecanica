@@ -1,14 +1,30 @@
 [
-    {
-      "id": "revisao-basica",
-      "titulo": "Revisão Básica",
-      "descricao": "Troca de óleo, filtros e verificação de fluidos.",
-      "categoria": "Manutenção Preventiva"
-    },
-    {
-      "id": "freios",
-      "titulo": "Sistema de Freios",
-      "descricao": "Troca de pastilhas, discos e sangria de fluido.",
-      "categoria": "Segurança"
-    }
-  ]
+  {
+    "id": "revisao-basica",
+    "titulo": "Revisão Básica",
+    "descricao": "Troca de óleo, filtros e verificação de fluidos.",
+    "categoria": "Manutenção Preventiva"
+  },
+  {
+    "id": "freios",
+    "titulo": "Sistema de Freios",
+    "descricao": "Troca de pastilhas, discos e sangria de fluido.",
+    "categoria": "Segurança"
+  },
+  {
+    "id": "injecao",
+    "categoria": "Motor",
+    "titulo": "Diagnóstico de Injeção Eletrônica",
+    "sintomaComum": "Luz da injeção acesa no painel, carro engasgando ou alto consumo de combustível.",
+    "causaProvavel": "Velas desgastadas, bicos injetores sujos ou falha em sensores.",
+    "alerta": "Se ignorar, pode carbonizar o motor ou danificar o catalisador irreversivelmente."
+  },
+  {
+    "id": "suspensao",
+    "categoria": "Suspensão",
+    "titulo": "Manutenção de Suspensão",
+    "sintomaComum": "Barulho de 'pancada' seca ao passar em buracos e instabilidade em curvas.",
+    "causaProvavel": "Amortecedores estourados ou buchas ressecadas.",
+    "alerta": "Se ignorar, compromete o alinhamento, desgasta os pneus prematuramente e põe em risco a segurança."
+  }
+]
