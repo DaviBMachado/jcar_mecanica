@@ -1,20 +1,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './layouts/RootLayout';
+import { Home } from './pages/Home';
+import { Services } from './pages/Services';
+import { About } from './pages/About';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RootLayout />}>
-          {/* Rota inicial provisória para teste */}
-          <Route index element={
-            <div className="container mx-auto p-8 text-center mt-20">
-              <h1 className="text-4xl font-bold mb-4">Motor Ligado! 🚗💨</h1>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Seu layout base e roteamento estão funcionando perfeitamente.
-              </p>
-            </div>
-          } />
+          <Route index element={<Home />} />
+          <Route path="servicos" element={<Services />} />
+          <Route path="sobre" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>
