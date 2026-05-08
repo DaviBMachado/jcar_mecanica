@@ -1,12 +1,15 @@
 import { create } from 'zustand';
 import catalogData from '../data/catalog.json';
 
-// Definindo a tipagem (TypeScript) baseada no nosso JSON
+// Atualizamos a tipagem para abraçar todos os campos possíveis do seu JSON
 interface Service {
   id: string;
   titulo: string;
-  descricao: string;
   categoria: string;
+  descricao?: string;      // O "?" diz que esse campo é opcional
+  sintomaComum?: string;   // Novos campos mapeados
+  causaProvavel?: string;
+  alerta?: string;
 }
 
 interface CatalogStore {
@@ -21,7 +24,6 @@ export const useCatalogStore = create<CatalogStore>((set, get) => ({
   searchQuery: '',
   setSearchQuery: (query) => set({ searchQuery: query }),
   
-  // Função que retorna os serviços filtrados com base no que o usuário digitou
   filteredServices: () => {
     const { services, searchQuery } = get();
     if (!searchQuery) return services;
@@ -29,7 +31,8 @@ export const useCatalogStore = create<CatalogStore>((set, get) => ({
     const queryLower = searchQuery.toLowerCase();
     return services.filter(service => 
       service.titulo.toLowerCase().includes(queryLower) || 
-      service.descricao.toLowerCase().includes(queryLower)
+      (service.descricao && service.descricao.toLowerCase().includes(queryLower)) ||
+      (service.sintomaComum && service.sintomaComum.toLowerCase().includes(queryLower))
     );
   }
 }));
