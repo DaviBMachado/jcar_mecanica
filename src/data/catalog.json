@@ -1,0 +1,14 @@
+[
+    {
+      "id": "revisao-basica",
+      "titulo": "Revisão Básica",
+      "descricao": "Troca de óleo, filtros e verificação de fluidos.",
+      "categoria": "Manutenção Preventiva"
+    },
+    {
+      "id": "freios",
+      "titulo": "Sistema de Freios",
+      "descricao": "Troca de pastilhas, discos e sangria de fluido.",
+      "categoria": "Segurança"
+    }
+  ]
