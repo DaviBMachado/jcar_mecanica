@@ -9,7 +9,8 @@
     "build": "vite-plugin-ssg build",
     "fetch-data": "node scripts/fetchReviews.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "optimize": "node scripts/optimizeImages.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
