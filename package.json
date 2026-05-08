@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/fetchReviews.js",
-    "build": "vite-ssg build",
+    "build": "vite-plugin-ssg build",
     "fetch-data": "node scripts/fetchReviews.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
