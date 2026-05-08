@@ -32,6 +32,20 @@ export function Footer() {
           </ul>
         </div>
 
+        {/* Mapa do Google Embed (trocar o link)*/}
+        <div className="w-full h-48 bg-slate-800 rounded-lg overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=..." 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Localização da Jcar Mecânica"
+          />
+        </div>
+
         {/* Coluna 3: Horários */}
         <div>
           <h3 className="text-white text-lg font-bold mb-4">Funcionamento</h3>
