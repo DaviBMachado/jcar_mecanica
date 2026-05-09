@@ -1,0 +1,41 @@
+name: Branch Flow Validation
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  validate-flow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validar fluxo de branches
+        run: |
+          echo "Base branch: ${{ github.base_ref }}"
+          echo "Source branch: ${{ github.head_ref }}"
+
+          # =====================================================
+          # REGRA 1:
+          # develop só aceita merge vindo de feat/*
+          # =====================================================
+          if [[ "${{ github.base_ref }}" == "develop" ]]; then
+            if [[ ! "${{ github.head_ref }}" =~ ^feat\/ ]]; then
+              echo "❌ A branch develop só aceita merges de feat/*"
+              exit 1
+            fi
+          fi
+
+          # =====================================================
+          # REGRA 2:
+          # main só aceita merge vindo de develop
+          # =====================================================
+          if [[ "${{ github.base_ref }}" == "main" ]]; then
+            if [[ "${{ github.head_ref }}" != "develop" ]]; then
+              echo "❌ A branch main só aceita merge vindo da develop"
+              exit 1
+            fi
+          fi
+
+          echo "✅ Fluxo de branches válido"
