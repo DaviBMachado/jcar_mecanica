@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Wrench, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from "../assets/img/logos_ngc/logo_limpa.png";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,12 +9,17 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/90 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/90">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        
+      {/* justify-center centraliza tudo, gap-12 dá o espaço entre logo e links */}
+      <div className="container mx-auto flex h-24 items-center justify-center gap-32 px-4 relative">
+
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl tracking-tight text-zinc-900 dark:text-zinc-50">
-          <Wrench className="h-6 w-6 text-zinc-900 dark:text-zinc-50" />
-          <span>Jcar Mecânica</span>
+        <Link to="/" className="flex items-center gap-3 font-bold text-xl tracking-tight text-zinc-900 dark:text-zinc-50">
+          <img
+            src={logo}
+            alt="Jcar Mecânica"
+            className="h-24 w-24 object-contain"
+          />
+          <span className="hidden sm:block">Jcar Mecânica</span>
         </Link>
 
         {/* Navegação Desktop */}
@@ -27,11 +33,14 @@ export function Header() {
           <Link to="/sobre" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors">
             Sobre Nós
           </Link>
+          <Link to="/trabalhe-conosco" className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors">
+            Trabalhe Conosco
+          </Link>
         </nav>
 
-        {/* Hamburger Button (Mobile) */}
-        <button 
-          className="md:hidden p-2 text-zinc-600 dark:text-zinc-400"
+        {/* Hamburger Button (Mobile) - Absolute right para não interferir no centro */}
+        <button
+          className="md:hidden absolute right-4 p-2 text-zinc-600 dark:text-zinc-400"
           onClick={toggleMenu}
           aria-label="Abrir menu"
         >
@@ -48,8 +57,11 @@ export function Header() {
           <Link to="/servicos" onClick={toggleMenu} className="text-zinc-600 dark:text-zinc-400 font-medium py-2 border-b border-zinc-100 dark:border-zinc-900">
             Serviços
           </Link>
-          <Link to="/sobre" onClick={toggleMenu} className="text-zinc-600 dark:text-zinc-400 font-medium py-2">
+          <Link to="/sobre" onClick={toggleMenu} className="text-zinc-600 dark:text-zinc-400 font-medium py-2 border-b border-zinc-100 dark:border-zinc-900">
             Sobre Nós
+          </Link>
+          <Link to="/trabalhe-conosco" onClick={toggleMenu} className="text-zinc-600 dark:text-zinc-400 font-medium py-2">
+            Trabalhe Conosco
           </Link>
         </nav>
       )}

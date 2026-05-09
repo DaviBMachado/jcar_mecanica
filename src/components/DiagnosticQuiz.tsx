@@ -1,7 +1,6 @@
 import { useQuizStore } from '../store/useQuizStore';
 import { ArrowRight, ArrowLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
 
-// Perguntas estruturadas do nosso Quiz
 const QUIZ_QUESTIONS = {
   1: {
     title: 'O que está acontecendo com o carro?',
@@ -14,19 +13,17 @@ const QUIZ_QUESTIONS = {
 };
 
 export function DiagnosticQuiz() {
-  // Puxando as funções e dados do nosso estado global (Zustand)
   const { step, answers, setAnswer, nextStep, prevStep, resetQuiz } = useQuizStore();
 
   const handleOptionSelect = (answer: string) => {
     setAnswer(`step_${step}`, answer);
   };
 
-  // Função para gerar o link do WhatsApp com base nas respostas
   const handleFinish = () => {
-    const phone = "5511999999999";
+    const phone = "5511977820882";
     const text = `Olá! Fiz o pré-diagnóstico no site.%0A%0A*Problema:* ${answers.step_1}%0A*Frequência:* ${answers.step_2}%0A%0AGostaria de agendar uma avaliação.`;
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-    resetQuiz(); // Limpa o quiz após enviar
+    resetQuiz();
   };
 
   return (

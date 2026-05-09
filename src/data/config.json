@@ -6,13 +6,13 @@
     "garantiaDias": 90
   },
   "contato": {
-    "whatsapp": "5511999999999",
+    "whatsapp": "5511961091591",
     "mensagemPadrao": "Olá, Jcar! Vi o site de vocês e gostaria de agendar uma avaliação.",
-    "emailRecrutamento": "rh@jcarmecanica.com.br"
+    "emailRecrutamento": "contatojcarmecanica@gmail.com.br"
   },
   "endereco": {
-    "texto": "Rua Exemplo, 123 - Bairro Automotivo, São Paulo - SP",
-    "mapsLink": "https://maps.google.com/?q=..." 
+    "texto": "Rua Atucuri 608 - Tatuapé, São Paulo - SP",
+    "mapsLink": "https://maps.google.com/maps?q=Rua+Atucuri+608+-+Tatuape&t=&z=15&ie=UTF8&iwloc=&output=embed" 
   },
   "diferenciais": [
     "Agendamento personalizado",

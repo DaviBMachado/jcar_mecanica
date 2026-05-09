@@ -1,11 +1,9 @@
 import { MessageCircle } from 'lucide-react';
 
 export function WhatsAppFAB() {
-  // Configuração do Lead
-  const whatsappNumber = "5511999999999"; // Lembre-se de colocar o DDI (55) + DDD + Número
+  const whatsappNumber = "5511961091591"; 
   const message = "Olá! Acessei o site e gostaria de agendar uma avaliação para o meu carro.";
   
-  // Criação do link seguro com o texto codificado para a URL
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (

@@ -1,7 +1,10 @@
+import logo from '../assets/img/logos_ngc/logo_limpa.png'
+
 export function About() {
     return (
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <h1 className="text-3xl font-bold mb-8">Sobre a Oficina</h1>
+        <img src={logo} alt="Logo Principal" className="mx-auto block h-64 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity mb-0" />
         <div className="prose prose-zinc dark:prose-invert max-w-none">
           <p className="text-lg mb-6">
             Fundada com o propósito de mudar a visão de que mecânica precisa ser algo complicado e obscuro. Nossa missão é entregar confiança e segurança para você e sua família.

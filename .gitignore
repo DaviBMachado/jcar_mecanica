@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
+*.env
 bundle.py
 jcar_mecanica.md
