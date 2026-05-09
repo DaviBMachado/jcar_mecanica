@@ -1,15 +1,19 @@
 [
   {
     "id": "revisao-basica",
+    "categoria": "Manutenção Preventiva",
     "titulo": "Revisão Básica",
-    "descricao": "Troca de óleo, filtros e verificação de fluidos.",
-    "categoria": "Manutenção Preventiva"
+    "sintomaComum": "Aumento no consumo de combustível, ruídos anormais no motor ou dificuldade na partida.",
+    "causaProvavel": "Óleo do motor vencido e filtros de ar ou combustível entupidos pelo tempo de uso.",
+    "alerta": "Se ignorar, pode causar o desgaste prematuro das peças internas do motor e até a sua quebra."
   },
   {
     "id": "freios",
+    "categoria": "Segurança",
     "titulo": "Sistema de Freios",
-    "descricao": "Troca de pastilhas, discos e sangria de fluido.",
-    "categoria": "Segurança"
+    "sintomaComum": "Assobio ou chiado ao pisar no freio, pedal 'borrachudo' ou trepidação no volante ao frear.",
+    "causaProvavel": "Pastilhas de freio excessivamente desgastadas, discos empenados ou fluido de freio vencido.",
+    "alerta": "Se ignorar, o veículo pode perder totalmente a capacidade de frenagem, causando acidentes graves."
   },
   {
     "id": "injecao",
@@ -26,5 +30,53 @@
     "sintomaComum": "Barulho de 'pancada' seca ao passar em buracos e instabilidade em curvas.",
     "causaProvavel": "Amortecedores estourados ou buchas ressecadas.",
     "alerta": "Se ignorar, compromete o alinhamento, desgasta os pneus prematuramente e põe em risco a segurança."
+  },
+  {
+    "id": "arrefecimento",
+    "categoria": "Motor",
+    "titulo": "Manutenção do Sistema de Arrefecimento",
+    "sintomaComum": "Ponteiro da temperatura subindo além do meio ou necessidade de completar a água com frequência.",
+    "causaProvavel": "Vazamento em mangueiras, bomba d'água defeituosa ou válvula termostática travada.",
+    "alerta": "Se ignorar, o motor vai superaquecer, podendo queimar a junta do cabeçote e exigir retífica completa."
+  },
+  {
+    "id": "embreagem",
+    "categoria": "Transmissão",
+    "titulo": "Troca do Kit de Embreagem",
+    "sintomaComum": "Pedal muito pesado, dificuldade para engatar marchas ou carro 'patinando' na aceleração.",
+    "causaProvavel": "Desgaste natural do disco, platô e rolamento devido à alta quilometragem ou uso severo.",
+    "alerta": "Se ignorar, o carro perderá totalmente a tração, impossibilitando a locomoção do veículo."
+  },
+  {
+    "id": "correia-dentada",
+    "categoria": "Manutenção Preventiva",
+    "titulo": "Troca de Correia Dentada e Tensor",
+    "sintomaComum": "Ruídos anormais vindos da parte da frente do motor ou falhas na aceleração (embora muitas vezes rompa sem aviso prévio).",
+    "causaProvavel": "Desgaste natural da borracha pelo tempo de uso (geralmente 3 a 5 anos) ou alta quilometragem atingida.",
+    "alerta": "Se a correia romper com o motor em funcionamento, as válvulas vão colidir com os pistões, exigindo a retífica completa e cara do motor."
+  },
+  {
+    "id": "alinhamento-balanceamento",
+    "categoria": "Suspensão",
+    "titulo": "Alinhamento e Balanceamento",
+    "sintomaComum": "O veículo 'puxa' para um dos lados em linha reta, o volante fica torto ou há trepidação na direção em altas velocidades.",
+    "causaProvavel": "Impactos em buracos severos, desgaste natural de peças da suspensão ou troca recente de pneus.",
+    "alerta": "Se ignorar, os pneus sofrerão um desgaste irregular e rápido, além de comprometer a estabilidade e a segurança nas curvas."
+  },
+  {
+    "id": "escapamento",
+    "categoria": "Exaustão",
+    "titulo": "Reparo e Troca de Escapamento",
+    "sintomaComum": "Aumento excessivo do barulho do motor ou cheiro forte de gases de escape dentro da cabine.",
+    "causaProvavel": "Silencioso traseiro ou intermediário furado por corrosão, ou juntas rompidas.",
+    "alerta": "Se ignorar, o veículo pode perder rendimento, aumentar o consumo e ser reprovado em vistorias de emissão de gases."
+  },
+  {
+    "id": "cabecote",
+    "categoria": "Motor",
+    "titulo": "Retífica e Troca de Junta de Cabeçote",
+    "sintomaComum": "Fumaça branca saindo do escapamento e mistura de água no óleo (óleo com cor de café com leite).",
+    "causaProvavel": "Superaquecimento anterior que empenou a face do cabeçote ou apodreceu a junta.",
+    "alerta": "Se ignorar, a água pode invadir o cilindro e causar calço hidráulico, destruindo o bloco do motor."
   }
 ]
