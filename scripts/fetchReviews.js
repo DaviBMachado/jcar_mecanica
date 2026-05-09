@@ -18,21 +18,34 @@ async function fetchGoogleReviews() {
     criarFallback();
     return;
   }
-
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${API_KEY}&language=pt-BR`;
+  const url = `https://places.googleapis.com/v1/places/${PLACE_ID}`;
 
   try {
-    console.log('Buscando reviews do Google Places...');
-    const response = await fetch(url);
-    const data = await response.json();
+    console.log('Buscando reviews do Google Places (v1)...');
 
-    if (data.status === 'OK' && data.result.reviews) {
-      const bestReviews = data.result.reviews.filter(review => review.rating >= 4);
-      
-      fs.writeFileSync(OUTPUT_PATH, JSON.stringify(bestReviews, null, 2));
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': API_KEY,
+        'X-Goog-FieldMask': 'reviews,displayName,rating'
+      }
+    });
+
+    const data = await response.json();
+    if (data.reviews && data.reviews.length > 0) {
+      const bestReviews = data.reviews.filter(review => review.rating >= 4);
+      const formattedReviews = bestReviews.map(review => ({
+        author_name: review.authorAttribution?.displayName || "Cliente",
+        rating: review.rating,
+        text: review.text?.text || review.originalText?.text || "",
+        relative_time_description: review.relativePublishTimeDescription || ""
+      }));
+
+      fs.writeFileSync(OUTPUT_PATH, JSON.stringify(formattedReviews, null, 2));
       console.log('Reviews salvos com sucesso em src/data/reviews.json!');
     } else {
-      console.error('Erro na API do Google:', data.status);
+      console.error('Nenhum review encontrado ou erro na resposta:', data);
       criarFallback();
     }
   } catch (error) {
