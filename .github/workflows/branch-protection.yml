@@ -17,19 +17,17 @@ jobs:
           echo "Source branch: ${{ github.head_ref }}"
 
           # =====================================================
-          # REGRA 1:
-          # develop só aceita merge vindo de feat/*
+          # develop só aceita feature/* ou feat/*
           # =====================================================
           if [[ "${{ github.base_ref }}" == "develop" ]]; then
-            if [[ ! "${{ github.head_ref }}" =~ ^feat\/ ]]; then
-              echo "❌ A branch develop só aceita merges de feat/*"
+            if [[ ! "${{ github.head_ref }}" =~ ^(feat|feature)\/ ]]; then
+              echo "❌ A branch develop só aceita merges de feat/* ou feature/*"
               exit 1
             fi
           fi
 
           # =====================================================
-          # REGRA 2:
-          # main só aceita merge vindo de develop
+          # main só aceita merge vindo da develop
           # =====================================================
           if [[ "${{ github.base_ref }}" == "main" ]]; then
             if [[ "${{ github.head_ref }}" != "develop" ]]; then
