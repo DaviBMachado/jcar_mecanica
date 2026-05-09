@@ -85,7 +85,7 @@ export function Home() {
               className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-xl hover:border-green-500 transition-colors group cursor-pointer"
             >
               <h3 className="font-bold text-lg mb-2 group-hover:text-green-500 transition-colors">{servico.titulo}</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-sm line-clamp-2">{servico.descricao || servico.sintomaComum}</p>
+              <p className="text-zinc-600 dark:text-zinc-400 text-sm line-clamp-2">{servico.sintomaComum}</p>
             </Link>
           ))}
         </div>
