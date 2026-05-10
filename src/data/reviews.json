@@ -1,8 +1,20 @@
 [
   {
-    "author_name": "Cliente Teste",
+    "author_name": "Carlos Eduardo",
     "rating": 5,
-    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
-    "relative_time_description": "há uma semana"
+    "text": "Atendimento excelente e muito transparente. Levei meu carro para arrumar a suspensão e me explicaram tudo o que precisava ser feito antes de mexerem. Recomendo!",
+    "relative_time_description": "há 2 semanas"
+  },
+  {
+    "author_name": "Mariana Silva",
+    "rating": 5,
+    "text": "Rápidos e eficientes. O diagnóstico da injeção eletrônica foi certeiro e o preço foi justo, sem surpresas no final do serviço.",
+    "relative_time_description": "há 1 mês"
+  },
+  {
+    "author_name": "Roberto Almeida",
+    "rating": 4,
+    "text": "Gostei muito do serviço, oficina limpa e organizada. O carro ficou pronto no prazo combinado. Só o acesso à oficina que é um pouco apertado, mas vale a pena.",
+    "relative_time_description": "há 2 meses"
   }
 ]
