@@ -1,5 +1,6 @@
 import { useQuizStore } from '../store/useQuizStore';
 import { ArrowRight, ArrowLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
+import config from '../data/config.json';
 
 const QUIZ_QUESTIONS = {
   1: {
@@ -13,6 +14,7 @@ const QUIZ_QUESTIONS = {
 };
 
 export function DiagnosticQuiz() {
+  const { whatsapp } = config.contato;
   const { step, answers, setAnswer, nextStep, prevStep, resetQuiz } = useQuizStore();
 
   const handleOptionSelect = (answer: string) => {
@@ -20,9 +22,8 @@ export function DiagnosticQuiz() {
   };
 
   const handleFinish = () => {
-    const phone = "5511977820882";
     const text = `Olá! Fiz o pré-diagnóstico no site.%0A%0A*Problema:* ${answers.step_1}%0A*Frequência:* ${answers.step_2}%0A%0AGostaria de agendar uma avaliação.`;
-    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    window.open(`https://wa.me/${whatsapp}?text=${text}`, '_blank');
     resetQuiz();
   };
 

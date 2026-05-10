@@ -2,11 +2,13 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
+import config from '../data/config.json';
 
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
   const services = filteredServices();
   const location = useLocation();
+  const { whatsapp } = config.contato;
 
   useEffect(() => {
     if (location.hash) {
@@ -37,17 +39,17 @@ export function Services() {
   }, {} as Record<string, typeof services>);
 
   return (
-    <div className="container mx-auto px-4 py-12">      
-      <div 
+    <div className="container mx-auto px-4 py-12">
+      <div
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
-        style={{ 
-          backgroundImage: `url('/src/assets/img/serviços.jpeg')`, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center' 
+        style={{
+          backgroundImage: `url('/src/assets/img/serviços.jpeg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
         }}
       >
         <div className="absolute inset-0 bg-black/70"></div>
-        
+
         <div className="relative z-10 w-full max-w-3xl flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Nossos Serviços
@@ -55,7 +57,7 @@ export function Services() {
           <p className="text-lg text-zinc-200 mb-10">
             Encontre o serviço ideal para o seu veículo. Realizamos manutenções preventivas e corretivas com equipamentos de ponta e transparência total.
           </p>
-          
+
           <div className="relative w-full max-w-lg border-none shadow-xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-zinc-400" />
@@ -80,32 +82,32 @@ export function Services() {
                 <span className="bg-green-500 w-2 h-6 rounded-full inline-block"></span>
                 {categoria}
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {servicosDaCategoria.map((service) => (
                   /* CARD COM OVERFLOW HIDDEN, ID INJETADO E SCROLL-MT-32 */
-                  <div 
-                    key={service.id} 
-                    id={service.id} 
+                  <div
+                    key={service.id}
+                    id={service.id}
                     className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:shadow-md transition-shadow flex flex-col overflow-hidden scroll-mt-32"
                   >
-                    
+
                     {/* PARTE SUPERIOR: Imagem ocupando toda a largura */}
                     <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">
-                    <img 
-                      src={`/src/assets/img/servicos/${service.id}.jpg`} 
-                      alt={service.titulo}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        const target = e.currentTarget;
-                        if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
-                          target.src = `/src/assets/img/servicos/${service.id}.jpeg`;
-                        } 
-                        else if (!target.src.includes('unsplash')) {
-                          target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
-                        }
-                      }}
-                    />
+                      <img
+                        src={`/src/assets/img/servicos/${service.id}.jpg`}
+                        alt={service.titulo}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
+                            target.src = `/src/assets/img/servicos/${service.id}.jpeg`;
+                          }
+                          else if (!target.src.includes('unsplash')) {
+                            target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
+                          }
+                        }}
+                      />
                     </div>
 
                     {/* PARTE INFERIOR: Textos e Botão no Padrão Original */}
@@ -113,7 +115,7 @@ export function Services() {
                       <div className="flex flex-col items-center text-center mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
                         <h3 className="text-xl font-bold mt-2">{service.titulo}</h3>
                       </div>
-                      
+
                       <div className="text-left flex-grow">
                         {service.descricao && (
                           <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4">
@@ -143,8 +145,8 @@ export function Services() {
                       </div>
 
                       <div className="mt-auto pt-4 w-full flex justify-center">
-                        <a 
-                          href={`https://wa.me/5511956860202?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação para o serviço de ${service.titulo}.`)}`}
+                        <a
+                          href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação para o serviço de ${service.titulo}.`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-green-600 dark:text-green-500 font-bold hover:underline text-sm text-center"
@@ -164,7 +166,7 @@ export function Services() {
           <PenTool className="h-12 w-12 text-zinc-400 mx-auto mb-4" />
           <h3 className="text-lg font-bold mb-2">Nenhum serviço encontrado</h3>
           <p className="text-zinc-500">Não achamos nenhum resultado para "{searchQuery}".</p>
-          <button 
+          <button
             onClick={() => setSearchQuery('')}
             className="mt-4 text-green-500 hover:underline font-medium"
           >
@@ -181,7 +183,6 @@ export function Services() {
             Tratamos o seu veículo com o máximo de cuidado. Veja um pouco do nosso dia a dia e da nossa paixão por mecânica automotiva.
           </p>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
             <img src="/src/assets/img/servicos_v2.jpeg" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -200,7 +201,6 @@ export function Services() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4">Diferenciais</h2>
         </div>
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {diferenciais.map((diferencial, index) => (
             <div key={index} className="flex items-center justify-center text-center gap-3 bg-zinc-50 dark:bg-zinc-900 p-4 rounded-lg border border-zinc-200 dark:border-zinc-800">
@@ -211,9 +211,9 @@ export function Services() {
         </div>
 
         <div className="text-center mt-8">
-          <a 
-            href="https://wa.me/5511956860202?text=Olá! Gostaria de fazer um agendamento personalizado." 
-            target="_blank" 
+          <a
+            href={`https://wa.me/${whatsapp}?text=Olá! Gostaria de fazer um agendamento personalizado.`}
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg"
           >
