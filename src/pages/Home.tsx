@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import reviewsData from '../data/reviews.json';
 import catalogData from '../data/catalog.json';
 
+import bgHome from '../assets/img/home_main.jpeg';
+import logo from '../assets/img/logos_ngc/logo_limpa.png';
+
 import audiLogo from '../assets/img/logos_exp/audi_logo.png';
 import bmwLogo from '../assets/img/logos_exp/bmw_logo.png';
 import fordLogo from '../assets/img/logos_exp/ford_logo.png';
@@ -32,20 +35,27 @@ export function Home() {
     <div className="flex flex-col gap-16 pb-16 overflow-hidden">
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 mt-12 md:mt-20">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-6 tracking-tight">
+      <section
+        className="relative w-full px-4 pt-10 pb-16 md:pt-16 md:pb-24 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bgHome})` }}
+      >
+        <div className="absolute inset-0 bg-black/75 z-0"></div>
+
+        <div className="container relative mx-auto text-center mb-12 z-10">
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white drop-shadow-md">
             Seu carro de volta à rua, <span className="text-green-500">sem dor de cabeça</span>.
-          </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-4">
+          </h2>
+          <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 drop-shadow">
             A Jcar é sua oficina mecânica especializada em devolver a performance original do seu veículo com total transparência. Esqueça os orçamentos surpresas: aqui você acompanha tudo de perto, com garantia de qualidade e equipamentos de ponta.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-8 bg-zinc-100 dark:bg-zinc-900 w-fit mx-auto px-6 py-3 rounded-full">
+          {/* Localização e Contato - Tamanho aumentado */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg md:text-xl font-bold text-white mb-10 bg-zinc-900/60 backdrop-blur-md w-fit mx-auto px-8 py-4 rounded-full border border-white/10 shadow-xl">
             <span className="flex items-center gap-2">
               📍 Rua Atucuri 608 - Tatuapé
             </span>
-            <span className="hidden sm:block text-zinc-300 dark:text-zinc-700">|</span>
+            <span className="hidden sm:block text-zinc-500">|</span>
             <span className="flex items-center gap-2">
               📞 (11) 96109-1591
             </span>
@@ -55,64 +65,62 @@ export function Home() {
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, Jcar! Vi o site e gostaria de agendar uma avaliação.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition-transform hover:scale-105 shadow-lg mb-12"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-green-500 hover:bg-green-600 text-white text-xl font-bold rounded-lg transition-transform hover:scale-105 shadow-xl"
           >
-            <MessageCircle className="h-5 w-5" />
+            <MessageCircle className="h-6 w-6" />
             Agendar via WhatsApp
           </a>
         </div>
+      </section>
 
+
+      <section>
         <DiagnosticQuiz />
       </section>
 
       {/* Serviços Rápidos (Atalhos) */}
-      <section className="container mx-auto px-4 py-8">
-        <div className="flex justify-between items-end mb-8">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">Serviços Prestados</h2>
-            <p className="text-zinc-600 dark:text-zinc-400">Clique para ver detalhes e sintomas</p>
-          </div>
-          <Link to="/servicos" className="hidden sm:flex text-green-500 hover:text-green-600 font-medium items-center gap-1">
-            Ver todos <ArrowRight className="h-4 w-4" />
+      <section className="container mx-auto px-4 py-16">
+        <div className="flex flex-col items-center text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Serviços Prestados</h2>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6">Clique para ver detalhes e sintomas de cada manutenção.</p>
+
+          <Link to="/servicos" className="text-green-600 dark:text-green-500 hover:text-green-700 font-bold text-lg flex items-center gap-2">
+            Ver todos os serviços <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {catalogData.slice(0, 4).map((servico) => (
+        {/* Grid ajustado para ter sempre 2 colunas no máximo, crescendo para baixo */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {catalogData.map((servico) => (
             <Link
               key={servico.id}
               to="/servicos"
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-6 rounded-xl hover:border-green-500 transition-colors group cursor-pointer"
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-xl hover:border-green-500 hover:shadow-lg transition-all group cursor-pointer"
             >
-              <h3 className="font-bold text-lg mb-2 group-hover:text-green-500 transition-colors">{servico.titulo}</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 text-sm line-clamp-2">{servico.descricao || servico.sintomaComum}</p>
+              <h3 className="font-bold text-2xl mb-3 group-hover:text-green-500 transition-colors">{servico.titulo}</h3>
             </Link>
           ))}
         </div>
-        <Link to="/servicos" className="sm:hidden text-green-500 font-medium flex items-center justify-center gap-1 mt-6">
-          Ver todos os serviços <ArrowRight className="h-4 w-4" />
-        </Link>
       </section>
 
       {/* Autoridade e Marcas */}
-      <section className="py-16 bg-zinc-900 text-white overflow-hidden">
-        <div className="container mx-auto px-4 text-center mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold">7+ Anos de Experiência</h1>
-          <p className="text-zinc-400 mt-2">Especialistas nas melhores montadoras do mercado</p>
+     <section className="py-20 bg-zinc-900 text-white overflow-hidden">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold">7+ Anos de Experiência</h1>
+          <p className="text-xl text-zinc-400 mt-4">Especialistas nas melhores montadoras do mercado</p>
         </div>
-
-        {/* Carrossel de Imagens (Loop Infinito) */}
-        <div className="relative flex w-full overflow-hidden bg-zinc-800 py-6">
-          {/* Alterado para usar a classe compilada animate-marquee */}
-          <div className="animate-marquee">
-            <div className="flex gap-16 px-8 items-center shrink-0">
+        
+        {/* Carrossel de Imagens */}
+        <div className="relative flex w-full overflow-hidden bg-zinc-800 py-8">
+          <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+            <div className="flex gap-20 px-10 items-center shrink-0">
               {MARCAS_LOGOS.map((logo, i) => (
-                <img key={`m1-${i}`} src={logo} alt="Marca Parceira" className="h-12 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
+                <img key={`m1-${i}`} src={logo} alt="Marca Parceira" className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
               ))}
             </div>
-            <div className="flex gap-16 px-8 items-center shrink-0">
+            <div className="flex gap-20 px-10 items-center shrink-0">
               {MARCAS_LOGOS.map((logo, i) => (
-                <img key={`m2-${i}`} src={logo} alt="Marca Parceira" className="h-12 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
+                <img key={`m2-${i}`} src={logo} alt="Marca Parceira" className="h-16 md:h-24 w-auto object-contain opacity-50 hover:opacity-100 transition-opacity" />
               ))}
             </div>
           </div>
