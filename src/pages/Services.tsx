@@ -1,9 +1,24 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
 
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
   const services = filteredServices();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    }
+  }, [location]);
 
   const diferenciais = [
     "Agendamento personalizado",
@@ -22,9 +37,7 @@ export function Services() {
   }, {} as Record<string, typeof services>);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      
-      {/* CABEÇALHO HERO COM IMAGEM DE FUNDO */}
+    <div className="container mx-auto px-4 py-12">      
       <div 
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{ 
@@ -70,8 +83,12 @@ export function Services() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {servicosDaCategoria.map((service) => (
-                  /* CARD COM OVERFLOW HIDDEN PARA CORTAR AS BORDAS DA IMAGEM */
-                  <div key={service.id} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+                  /* CARD COM OVERFLOW HIDDEN, ID INJETADO E SCROLL-MT-32 */
+                  <div 
+                    key={service.id} 
+                    id={service.id} 
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:shadow-md transition-shadow flex flex-col overflow-hidden scroll-mt-32"
+                  >
                     
                     {/* PARTE SUPERIOR: Imagem ocupando toda a largura */}
                     <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">

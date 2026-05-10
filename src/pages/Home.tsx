@@ -5,7 +5,6 @@ import reviewsData from '../data/reviews.json';
 import catalogData from '../data/catalog.json';
 
 import bgHome from '../assets/img/home_main.jpeg';
-import logo from '../assets/img/logos_ngc/logo_limpa.png';
 
 import audiLogo from '../assets/img/logos_exp/audi_logo.png';
 import bmwLogo from '../assets/img/logos_exp/bmw_logo.png';
@@ -84,32 +83,35 @@ export function Home() {
           <h2 className="text-3xl md:text-4xl font-bold mb-3">Serviços Prestados</h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6">Clique para ver detalhes e sintomas de cada manutenção.</p>
 
-          <Link to="/servicos" className="text-green-600 dark:text-green-500 hover:text-green-700 font-bold text-lg flex items-center gap-2">
+          <Link to="/servicos" onClick={() => window.scrollTo(0, 0)} className="text-green-600 dark:text-green-500 hover:text-green-700 font-bold text-lg flex items-center gap-2">
             Ver todos os serviços <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
 
-        {/* Grid ajustado para ter sempre 2 colunas no máximo, crescendo para baixo */}
+        {/* Grid de 2 colunas travado nos 4 primeiros itens (.slice(0,4)) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {catalogData.map((servico) => (
+          {catalogData.slice(0, 6).map((servico) => (
             <Link
               key={servico.id}
-              to="/servicos"
+              to={`/servicos#${servico.id}`}
               className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-xl hover:border-green-500 hover:shadow-lg transition-all group cursor-pointer"
             >
               <h3 className="font-bold text-2xl mb-3 group-hover:text-green-500 transition-colors">{servico.titulo}</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 line-clamp-2">
+                {servico.sintomaComum}
+              </p>
             </Link>
           ))}
         </div>
       </section>
 
       {/* Autoridade e Marcas */}
-     <section className="py-20 bg-zinc-900 text-white overflow-hidden">
+      <section className="py-20 bg-zinc-900 text-white overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold">7+ Anos de Experiência</h1>
           <p className="text-xl text-zinc-400 mt-4">Especialistas nas melhores montadoras do mercado</p>
         </div>
-        
+
         {/* Carrossel de Imagens */}
         <div className="relative flex w-full overflow-hidden bg-zinc-800 py-8">
           <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
