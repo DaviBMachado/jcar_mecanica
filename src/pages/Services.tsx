@@ -1,9 +1,24 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
 
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
   const services = filteredServices();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+      }
+    }
+  }, [location]);
 
   const diferenciais = [
     "Agendamento personalizado",
@@ -22,9 +37,7 @@ export function Services() {
   }, {} as Record<string, typeof services>);
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      
-      {/* CABEÇALHO HERO COM IMAGEM DE FUNDO */}
+    <div className="container mx-auto px-4 py-12">      
       <div 
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{ 
@@ -33,10 +46,8 @@ export function Services() {
           backgroundPosition: 'center' 
         }}
       >
-        {/* Película escura para dar contraste ao texto (Overlay) */}
         <div className="absolute inset-0 bg-black/70"></div>
         
-        {/* Conteúdo sobreposto à imagem */}
         <div className="relative z-10 w-full max-w-3xl flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Nossos Serviços
@@ -45,7 +56,6 @@ export function Services() {
             Encontre o serviço ideal para o seu veículo. Realizamos manutenções preventivas e corretivas com equipamentos de ponta e transparência total.
           </p>
           
-          {/* Barra de busca centralizada */}
           <div className="relative w-full max-w-lg border-none shadow-xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-zinc-400" />
@@ -73,48 +83,75 @@ export function Services() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {servicosDaCategoria.map((service) => (
-                  <div key={service.id} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col">
-                    <div className="flex flex-col items-center text-center mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
-                      <h3 className="text-xl font-bold mt-2">{service.titulo}</h3>
-                    </div>
+                  /* CARD COM OVERFLOW HIDDEN, ID INJETADO E SCROLL-MT-32 */
+                  <div 
+                    key={service.id} 
+                    id={service.id} 
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:shadow-md transition-shadow flex flex-col overflow-hidden scroll-mt-32"
+                  >
                     
-                    <div className="text-left flex-grow">
-                      {service.descricao && (
-                        <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4">
-                          {service.descricao}
-                        </p>
-                      )}
-                      {service.sintomaComum && (
-                        <div className="mb-3 text-sm">
-                          <span className="font-semibold text-zinc-800 dark:text-zinc-200">Sintomas: </span>
-                          <span className="text-zinc-600 dark:text-zinc-400">{service.sintomaComum}</span>
-                        </div>
-                      )}
-                      {service.causaProvavel && (
-                        <div className="mb-4 text-sm">
-                          <span className="font-semibold text-zinc-800 dark:text-zinc-200">Causa: </span>
-                          <span className="text-zinc-600 dark:text-zinc-400">{service.causaProvavel}</span>
-                        </div>
-                      )}
-                      {service.alerta && (
-                        <div className="mb-6 mt-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 p-3 rounded-lg flex items-start gap-2">
-                          <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
-                          <p className="text-sm text-red-700 dark:text-red-400">
-                            <span className="font-bold">Alerta:</span> {service.alerta}
-                          </p>
-                        </div>
-                      )}
+                    {/* PARTE SUPERIOR: Imagem ocupando toda a largura */}
+                    <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">
+                    <img 
+                      src={`/src/assets/img/servicos/${service.id}.jpg`} 
+                      alt={service.titulo}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
+                          target.src = `/src/assets/img/servicos/${service.id}.jpeg`;
+                        } 
+                        else if (!target.src.includes('unsplash')) {
+                          target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
+                        }
+                      }}
+                    />
                     </div>
 
-                    <div className="mt-auto pt-4 w-full flex justify-center">
-                      <a 
-                        href={`https://wa.me/5511956860202?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação para o serviço de ${service.titulo}.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-green-600 dark:text-green-500 font-bold hover:underline text-sm text-center"
-                      >
-                        Agendar serviço
-                      </a>
+                    {/* PARTE INFERIOR: Textos e Botão no Padrão Original */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex flex-col items-center text-center mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
+                        <h3 className="text-xl font-bold mt-2">{service.titulo}</h3>
+                      </div>
+                      
+                      <div className="text-left flex-grow">
+                        {service.descricao && (
+                          <p className="text-zinc-600 dark:text-zinc-400 text-sm mb-4">
+                            {service.descricao}
+                          </p>
+                        )}
+                        {service.sintomaComum && (
+                          <div className="mb-3 text-sm">
+                            <span className="font-semibold text-zinc-800 dark:text-zinc-200">Sintomas: </span>
+                            <span className="text-zinc-600 dark:text-zinc-400">{service.sintomaComum}</span>
+                          </div>
+                        )}
+                        {service.causaProvavel && (
+                          <div className="mb-4 text-sm">
+                            <span className="font-semibold text-zinc-800 dark:text-zinc-200">Causa: </span>
+                            <span className="text-zinc-600 dark:text-zinc-400">{service.causaProvavel}</span>
+                          </div>
+                        )}
+                        {service.alerta && (
+                          <div className="mb-6 mt-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50 p-3 rounded-lg flex items-start gap-2">
+                            <AlertTriangle className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+                            <p className="text-sm text-red-700 dark:text-red-400">
+                              <span className="font-bold">Alerta:</span> {service.alerta}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="mt-auto pt-4 w-full flex justify-center">
+                        <a 
+                          href={`https://wa.me/5511956860202?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação para o serviço de ${service.titulo}.`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 dark:text-green-500 font-bold hover:underline text-sm text-center"
+                        >
+                          Agendar serviço
+                        </a>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -145,34 +182,15 @@ export function Services() {
           </p>
         </div>
         
-        {/* Grid de 3 colunas para as imagens */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* IMAGEM 2 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img 
-              src="/src/assets/img/servicos_v2.jpeg" 
-              alt="Mercedes com capô aberto" 
-              /* Alterado de h-64 para h-80 md:h-96 */
-              className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <img src="/src/assets/img/servicos_v2.jpeg" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
-          {/* IMAGEM 3 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img 
-              src="/src/assets/img/servicos_v4.jpeg" 
-              alt="Mecânico retirando motor do carro" 
-              /* Alterado de h-64 para h-80 md:h-96 */
-              className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <img src="/src/assets/img/servicos_v4.jpeg" alt="Mecânico retirando motor do carro" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
-          {/* IMAGEM 4 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img 
-              src="/src/assets/img/servicos_v3.jpeg" 
-              alt="Motor limpo e retificado" 
-              /* Alterado de h-64 para h-80 md:h-96 */
-              className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <img src="/src/assets/img/servicos_v3.jpeg" alt="Motor limpo e retificado" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
         </div>
       </section>

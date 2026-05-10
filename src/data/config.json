@@ -2,13 +2,13 @@
   "oficina": {
     "nome": "Jcar Mecânica",
     "cnpj": "00.000.000/0001-00",
-    "anosExperiencia": 15,
+    "anosExperiencia": "7+",
     "garantiaDias": 90
   },
   "contato": {
     "whatsapp": "5511961091591",
     "mensagemPadrao": "Olá, Jcar! Vi o site de vocês e gostaria de agendar uma avaliação.",
-    "emailRecrutamento": "contatojcarmecanica@gmail.com.br"
+    "email": "contatojcarmecanica@gmail.com.br"
   },
   "endereco": {
     "texto": "Rua Atucuri 608 - Tatuapé, São Paulo - SP",
