@@ -20,6 +20,7 @@ import renautLogo from '../assets/img/logos_exp/renaut_logo.png';
 import subaruLogo from '../assets/img/logos_exp/subaru_png.png';
 import toyotaLogo from '../assets/img/logos_exp/toyota_logo.png';
 import volkswagemLogo from '../assets/img/logos_exp/volkswagem_logo.png';
+import instaIcon from '../assets/img/logos_ngc/Instagram_icon.png';
 
 const MARCAS_LOGOS = [
   audiLogo, bmwLogo, fordLogo, hondaLogo, hyundaiLogo, jaguarLogo, kiaLogo,
@@ -28,6 +29,12 @@ const MARCAS_LOGOS = [
 
 const WHATSAPP_NUMBER = "5511961091591";
 const GOOGLE_REVIEW_LINK = "https://share.google/bLuiuuc01qPdZLvr3";
+const stats = [
+  { value: '10+', label: 'Anos de experiência' },
+  { value: '500+', label: 'Clientes satisfeitos' },
+  { value: '90d', label: 'De garantia em todos os serviços' },
+  { value: '100%', label: 'Transparência no orçamento' },
+];
 
 export function Home() {
   return (
@@ -41,23 +48,54 @@ export function Home() {
         <div className="absolute inset-0 bg-black/75 z-0"></div>
 
         <div className="container relative mx-auto text-center mb-12 z-10">
-
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white drop-shadow-md">
-            Seu carro de volta à rua, <span className="text-green-500">sem dor de cabeça</span>.
+            Atendemos por: <span className="text-green-500">Agendamento e Ordem de chegada</span>.
           </h2>
-          <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 drop-shadow">
-            A Jcar é sua oficina mecânica especializada em devolver a performance original do seu veículo com total transparência. Esqueça os orçamentos surpresas: aqui você acompanha tudo de perto, com garantia de qualidade e equipamentos de ponta.
-          </p>
 
-          {/* Localização e Contato - Tamanho aumentado */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-lg md:text-xl font-bold text-white mb-10 bg-zinc-900/60 backdrop-blur-md w-fit mx-auto px-8 py-4 rounded-full border border-white/10 shadow-xl">
-            <span className="flex items-center gap-2">
-              📍 Rua Atucuri 608 - Tatuapé
-            </span>
-            <span className="hidden sm:block text-zinc-500">|</span>
-            <span className="flex items-center gap-2">
-              📞 (11) 96109-1591
-            </span>
+          {/* Localização, Contato e Pagamento - Layout Ajustado */}
+          <div className="flex flex-col items-center justify-center gap-4 text-base md:text-lg font-medium text-white mb-10 bg-zinc-900/60 backdrop-blur-md w-fit mx-auto px-6 py-5 rounded-2xl border border-white/10 shadow-xl">
+
+            {/* Linha 1: Links interativos */}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 w-full">
+              <a
+                href="https://maps.google.com/?q=Rua+Atucuri+608+-+Tatuapé+-+São+Paulo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+              >
+                📍 Rua Atucuri 608 - Tatuapé
+              </a>
+
+              <span className="hidden md:block text-zinc-500">|</span>
+
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+              >
+                📞 (11) 96109-1591
+              </a>
+
+              <span className="hidden md:block text-zinc-500">|</span>
+
+              <a
+                href="https://www.instagram.com/jcar_leste/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+              >
+              <img src={instaIcon} alt="instagram_icon" className="h-4 w-4 shrink-0 object-contain opacity-70"/> 
+              @jcar_leste
+              </a>
+            </div>
+
+            {/* Linha 2: Pagamento (Separado por uma linha sutil) */}
+            <div className="flex items-center justify-center w-full pt-3 mt-1 border-t border-white/10 text-sm md:text-base text-zinc-300">
+              <span className="flex items-center gap-2 text-center">
+                💳 Formas de pagamento: Pix, débito e cartão de crédito
+              </span>
+            </div>
           </div>
 
           <a
@@ -72,8 +110,22 @@ export function Home() {
         </div>
       </section>
 
+      <div className="bg-zinc-900 dark:bg-zinc-950 text-white py-10 px-4">
+        <div className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {stats.map((s, i) => (
+            <div key={i} className="flex flex-col items-center gap-1">
+              <span className="text-3xl md:text-4xl font-extrabold text-green-400">{s.value}</span>
+              <span className="text-sm text-zinc-400 font-medium">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <section>
+        <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 drop-shadow">
+          Para um diagnostico rápido que pode facilitar seu agendamento, responda o quiz abaixo:
+        </p>
+
         <DiagnosticQuiz />
       </section>
 
@@ -108,7 +160,7 @@ export function Home() {
       {/* Autoridade e Marcas */}
       <section className="py-20 bg-zinc-900 text-white overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold">7+ Anos de Experiência</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">30+ Anos de Experiência</h1>
           <p className="text-xl text-zinc-400 mt-4">Especialistas nas melhores montadoras do mercado</p>
         </div>
 

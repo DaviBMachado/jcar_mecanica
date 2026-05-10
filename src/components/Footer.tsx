@@ -1,11 +1,12 @@
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import instaIcon from '../assets/img/logos_ngc/Instagram_icon.png';
 
 export function Footer() {
   return (
     <footer className="bg-zinc-900 text-zinc-300 py-12 text-left mt-auto">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        
+
         {/* Coluna 1: Sobre */}
         <div>
           <h3 className="text-white text-lg font-bold mb-4">Jcar Mecânica</h3>
@@ -22,16 +23,31 @@ export function Footer() {
           <h3 className="text-white text-lg font-bold mb-4">Contato</h3>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-3 hover:text-white transition-colors">
-              <Phone className="h-4 w-4 text-zinc-400 shrink-0" /> 
+              <Phone className="h-4 w-4 text-zinc-400 shrink-0" />
               <span>(11) 96109-1591</span>
             </li>
             <li className="flex items-center gap-3 hover:text-white transition-colors">
-              <Mail className="h-4 w-4 text-zinc-400 shrink-0" /> 
+              <Mail className="h-4 w-4 text-zinc-400 shrink-0" />
               <span className="break-all">contatojcarmecanica@gmail.com.br</span>
             </li>
             <li className="flex items-start gap-3 hover:text-white transition-colors">
-              <MapPin className="h-4 w-4 text-zinc-400 shrink-0 mt-0.5" /> 
-              <span>Rua Atucuri 608 - Tatuapé<br/>São Paulo, SP</span>
+              <MapPin className="h-4 w-4 text-zinc-400 shrink-0 mt-0.5" />
+              <span>Rua Atucuri 608 - Tatuapé<br />São Paulo, SP</span>
+            </li>
+            {/* Link do Instagram */}
+            <li className="flex items-center gap-3 hover:text-white transition-colors">
+              <img src={instaIcon}
+                alt="instagram_icon"
+                className="h-4 w-4 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <a
+                href="https://www.instagram.com/jcar_leste/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-green-500 transition-colors"
+              >
+                @jcar_leste
+              </a>
             </li>
           </ul>
         </div>
@@ -44,12 +60,8 @@ export function Footer() {
               <span>Segunda a Sexta</span>
               <span className="font-medium text-white">08:00 - 18:00</span>
             </li>
-            <li className="flex justify-between border-b border-zinc-800 pb-2 pt-1">
-              <span>Sábado</span>
-              <span className="font-medium text-white">08:00 - 13:00</span>
-            </li>
             <li className="flex justify-between text-zinc-500 pt-1">
-              <span>Domingo</span>
+              <span>Sábado e Domingo</span>
               <span>Fechado</span>
             </li>
           </ul>
@@ -57,13 +69,13 @@ export function Footer() {
 
         {/* Coluna 4: Mapa do Google Embed */}
         <div className="w-full h-full min-h-[160px] bg-slate-800 rounded-lg overflow-hidden shadow-inner">
-          <iframe 
-            src="https://maps.google.com/maps?q=Rua+Atucuri+608+-+Tatuape&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
+          <iframe
+            src="https://maps.google.com/maps?q=Rua+Atucuri+608+-+Tatuape&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Localização da Jcar Mecânica"
             className="w-full h-full object-cover"

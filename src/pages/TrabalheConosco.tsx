@@ -1,20 +1,30 @@
 import { Briefcase, Wrench, GraduationCap, Users, FileText, CheckCircle2, Mail, MessageCircle } from 'lucide-react';
 import config from '../data/config.json';
+import bgTrabalhe from '../assets/img/home_main.jpeg';
 
 export function TrabalheConosco() {
   const { email, whatsapp } = config.contato;
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl mb-16">
-      
-      {/* Cabeçalho da Página */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-zinc-900 dark:text-white tracking-tight">
-          Venha para o nosso time!
-        </h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          Estamos sempre em busca de profissionais dedicados, honestos e apaixonados por mecânica automotiva.
-        </p>
+      <div 
+        className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
+        style={{ 
+          backgroundImage: `url(${bgTrabalhe})`, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center' 
+        }}
+      >
+        <div className="absolute inset-0 bg-black/75"></div>
+        
+        <div className="relative z-10 w-full max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white tracking-tight drop-shadow-md">
+            Venha para o nosso time!
+          </h1>
+          <p className="text-lg text-zinc-200 drop-shadow">
+            Estamos sempre em busca de profissionais dedicados, honestos e apaixonados por mecânica automotiva.
+          </p>
+        </div>
       </div>
 
       {/* Seção: Exigências Mínimas */}

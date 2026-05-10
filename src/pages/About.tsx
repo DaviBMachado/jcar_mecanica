@@ -1,5 +1,3 @@
-// about.tsx
-import React from 'react';
 import logo from '../assets/img/logos_ngc/logo_limpa.png';
 import fotoDono from '../assets/img/perfil_dono.jpeg';
 import {
@@ -356,11 +354,10 @@ export function About() {
               href="https://wa.me/5511956860202?text=Olá! Gostaria de agendar uma avaliação para o meu veículo."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white font-bold py-4 px-10 rounded-full transition-colors shadow-xl shadow-green-500/25 text-lg"
+              className="px-6 py-3 font-bold bg-green-500 hover:bg-green-400 text-white rounded-lg shadow-xl transition-colors flex inline-flex items-center justify-center gap-3 text-lg"
             >
               Falar com um Mecânico no WhatsApp
             </a>
-
             <p className="text-zinc-600 text-sm">
               Sem compromisso. Orçamento gratuito e sem surpresas.
             </p>
