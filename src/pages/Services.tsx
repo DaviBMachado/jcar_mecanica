@@ -1,9 +1,25 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
 
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
   const services = filteredServices();
+  const location = useLocation();
+
+  // Efeito que detecta a #URL e rola até o card específico ao carregar a página
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150); // Timeout leve apenas para aguardar a DOM terminar de pintar
+      }
+    }
+  }, [location]);
 
   const diferenciais = [
     "Agendamento personalizado",
@@ -33,10 +49,8 @@ export function Services() {
           backgroundPosition: 'center' 
         }}
       >
-        {/* Película escura para dar contraste ao texto (Overlay) */}
         <div className="absolute inset-0 bg-black/70"></div>
         
-        {/* Conteúdo sobreposto à imagem */}
         <div className="relative z-10 w-full max-w-3xl flex flex-col items-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Nossos Serviços
@@ -45,7 +59,6 @@ export function Services() {
             Encontre o serviço ideal para o seu veículo. Realizamos manutenções preventivas e corretivas com equipamentos de ponta e transparência total.
           </p>
           
-          {/* Barra de busca centralizada */}
           <div className="relative w-full max-w-lg border-none shadow-xl">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search className="h-5 w-5 text-zinc-400" />
@@ -73,7 +86,11 @@ export function Services() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {servicosDaCategoria.map((service) => (
-                  <div key={service.id} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col">
+                  <div 
+                    id={service.id} // <-- ID adicionado aqui!
+                    key={service.id} 
+                    className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 hover:shadow-md transition-shadow flex flex-col scroll-mt-32" // <-- scroll-mt-32 garante margem do header
+                  >
                     <div className="flex flex-col items-center text-center mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
                       <h3 className="text-xl font-bold mt-2">{service.titulo}</h3>
                     </div>
@@ -136,7 +153,7 @@ export function Services() {
         </div>
       )}
 
-      {/* SEÇÃO: NOSSA ESTRUTURA (GALERIA DE IMAGENS MAIOR) */}
+      {/* SEÇÃO: NOSSA ESTRUTURA (GALERIA DE IMAGENS) */}
       <section className="mb-20">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-4">Nossa Estrutura e Trabalho</h2>
@@ -145,32 +162,25 @@ export function Services() {
           </p>
         </div>
         
-        {/* Grid de 3 colunas para as imagens */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* IMAGEM 2 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
             <img 
               src="/src/assets/img/servicos_v2.jpeg" 
               alt="Mercedes com capô aberto" 
-              /* Alterado de h-64 para h-80 md:h-96 */
               className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
-          {/* IMAGEM 3 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
             <img 
               src="/src/assets/img/servicos_v4.jpeg" 
               alt="Mecânico retirando motor do carro" 
-              /* Alterado de h-64 para h-80 md:h-96 */
               className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
-          {/* IMAGEM 4 */}
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
             <img 
               src="/src/assets/img/servicos_v3.jpeg" 
               alt="Motor limpo e retificado" 
-              /* Alterado de h-64 para h-80 md:h-96 */
               className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
