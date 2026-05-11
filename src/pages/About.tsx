@@ -84,7 +84,7 @@ const steps = [
 ];
 
 const stats = [
-  { value: '10+', label: 'Anos de experiência' },
+  { value: '30', label: 'Anos de experiência' },
   { value: '500+', label: 'Clientes satisfeitos' },
   { value: '90d', label: 'De garantia em todos os serviços' },
   { value: '100%', label: 'Transparência no orçamento' },
