@@ -4,10 +4,9 @@ import instaIcon from '../assets/img/logos_ngc/Instagram_icon.png';
 
 export function Footer() {
   return (
-    <footer className="bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 py-12 text-left mt-auto">
+    <footer className="bg-zinc-100 dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 py-12 text-left mt-auto">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        {/* Coluna 1: Sobre */}
         <div>
           <h3 className="text-zinc-900 dark:text-white text-lg font-bold mb-4">Jcar Mecânica</h3>
           <p className="text-sm leading-relaxed mb-4">
@@ -15,29 +14,27 @@ export function Footer() {
           </p>
           <Link
             to="/sobre"
-            className="text-blue-600 dark:text-blue-400 hover:text-red-600 dark:hover:text-red-500 text-sm font-medium transition-colors"
+            className="text-blue-600 dark:text-blue-500 hover:text-red-600 dark:hover:text-red-500 text-sm font-medium transition-colors"
           >
             Saiba mais sobre nós
           </Link>
         </div>
 
-        {/* Coluna 2: Contatos */}
         <div>
           <h3 className="text-zinc-900 dark:text-white text-lg font-bold mb-4">Contato</h3>
           <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-3 hover:text-zinc-900 dark:hover:text-white transition-colors">
-              <Phone className="h-4 w-4 text-zinc-400 shrink-0" />
+            <li className="flex items-center gap-3 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+              <Phone className="h-4 w-4 text-blue-500 shrink-0" />
               <span>(11) 96109-1591</span>
             </li>
-            <li className="flex items-center gap-3 hover:text-zinc-900 dark:hover:text-white transition-colors">
-              <Mail className="h-4 w-4 text-zinc-400 shrink-0" />
+            <li className="flex items-center gap-3 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+              <Mail className="h-4 w-4 text-blue-500 shrink-0" />
               <span className="break-all">contatojcarmecanica@gmail.com.br</span>
             </li>
-            <li className="flex items-start gap-3 hover:text-zinc-900 dark:hover:text-white transition-colors">
-              <MapPin className="h-4 w-4 text-zinc-400 shrink-0 mt-0.5" />
+            <li className="flex items-start gap-3 hover:text-red-600 dark:hover:text-red-500 transition-colors">
+              <MapPin className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
               <span>Rua Atucuri 608 - Tatuapé<br />São Paulo, SP</span>
             </li>
-            {/* Link do Instagram */}
             <li className="flex items-center gap-3">
               <img
                 src={instaIcon}
@@ -56,23 +53,21 @@ export function Footer() {
           </ul>
         </div>
 
-        {/* Coluna 3: Horários */}
         <div>
           <h3 className="text-zinc-900 dark:text-white text-lg font-bold mb-4">Funcionamento</h3>
           <ul className="space-y-2 text-sm">
-            <li className="flex justify-between py-1 border-b border-zinc-300 dark:border-zinc-800 last:border-0">
+            <li className="flex justify-between py-1 border-b border-zinc-200 dark:border-zinc-800 last:border-0">
               <span>Segunda a Sexta</span>
               <span className="font-medium text-zinc-900 dark:text-white">08:00 - 18:00</span>
             </li>
-            <li className="flex justify-between text-zinc-400 dark:text-zinc-500 pt-1">
+            <li className="flex justify-between text-zinc-500 dark:text-zinc-500 pt-1">
               <span>Sábado e Domingo</span>
               <span>Fechado</span>
             </li>
           </ul>
         </div>
 
-        {/* Coluna 4: Mapa do Google Embed */}
-        <div className="w-full h-full min-h-[160px] bg-zinc-300 dark:bg-slate-800 rounded-lg overflow-hidden shadow-inner">
+        <div className="w-full h-full min-h-[160px] bg-zinc-200 dark:bg-slate-800 rounded-lg overflow-hidden shadow-inner border border-zinc-300 dark:border-zinc-800">
           <iframe
             src="https://maps.google.com/maps?q=Rua+Atucuri+608+-+Tatuape&t=&z=15&ie=UTF8&iwloc=&output=embed"
             width="100%"
@@ -87,8 +82,7 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="border-t border-zinc-300 dark:border-zinc-800 mt-12 pt-6 text-center text-sm text-zinc-500 dark:text-zinc-500">
+      <div className="border-t border-zinc-200 dark:border-zinc-800 mt-12 pt-6 text-center text-sm text-zinc-500 dark:text-zinc-500">
         <p>© {new Date().getFullYear()} Jcar Mecânica. Todos os direitos reservados.</p>
       </div>
     </footer>

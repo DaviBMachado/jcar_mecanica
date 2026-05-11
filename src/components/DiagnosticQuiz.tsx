@@ -29,25 +29,22 @@ export function DiagnosticQuiz() {
 
   return (
     <div className="max-w-xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-800 p-6 md:p-8">
-      
-      {/* Cabeçalho do Quiz com barra de progresso */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold flex items-center gap-2 text-zinc-900 dark:text-zinc-100">
-            <AlertCircle className="h-5 w-5 text-blue-500" />
+            <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-500" />
             Pré-Diagnóstico Rápido
           </h3>
           <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Passo {step} de 3</span>
         </div>
         <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-blue-500 transition-all duration-300"
+            className="h-full bg-blue-600 dark:bg-blue-500 transition-all duration-300"
             style={{ width: `${(step / 3) * 100}%` }}
           />
         </div>
       </div>
 
-      {/* Conteúdo dinâmico baseado no passo atual */}
       {step < 3 ? (
         <div className="space-y-4">
           <h4 className="font-semibold text-lg mb-4 text-zinc-800 dark:text-zinc-200">
@@ -78,17 +75,17 @@ export function DiagnosticQuiz() {
             >
               <ArrowLeft className="h-4 w-4" /> Voltar
             </button>
+            {/* Botão de Ação - Vermelho */}
             <button
               onClick={nextStep}
               disabled={!answers[`step_${step}`]}
-              className="flex items-center gap-2 px-6 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-zinc-800 dark:hover:bg-white transition-colors"
+              className="flex items-center gap-2 px-6 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Próximo <ArrowRight className="h-4 w-4" />
             </button>
           </div>
         </div>
       ) : (
-        /* Passo 3: Resultado Final */
         <div className="text-center py-6">
           <div className="mx-auto w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-6">
             <CheckCircle2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
@@ -105,9 +102,10 @@ export function DiagnosticQuiz() {
             >
               Refazer Quiz
             </button>
+            {/* CTA Final - Vermelho */}
             <button
               onClick={handleFinish}
-              className="px-6 py-3 font-medium bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2"
+              className="px-6 py-3 font-medium bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2"
             >
               Enviar pelo WhatsApp
             </button>
