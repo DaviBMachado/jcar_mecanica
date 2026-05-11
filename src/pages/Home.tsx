@@ -3,6 +3,7 @@ import { ShieldCheck, Clock, Wrench, ArrowRight, Star, MessageCircle } from 'luc
 import { Link } from 'react-router-dom';
 import reviewsData from '../data/reviews.json';
 import catalogData from '../data/catalog.json';
+import config from '../data/config.json';
 
 import bgHome from '../assets/img/home_main.jpeg';
 
@@ -27,7 +28,7 @@ const MARCAS_LOGOS = [
   landHoverLogo, mazdaLogo, mercedesLogo, renautLogo, subaruLogo, toyotaLogo, volkswagemLogo
 ];
 
-const WHATSAPP_NUMBER = "5511961091591";
+const { whatsapp } = config.contato;
 const GOOGLE_REVIEW_LINK = "https://share.google/bLuiuuc01qPdZLvr3";
 const stats = [
   { value: '10+', label: 'Anos de experiência' },
@@ -40,7 +41,7 @@ export function Home() {
   return (
     <div className="flex flex-col gap-16 pb-16 overflow-hidden">
 
-      {/* Hero Section */}
+      {/* Hero Section — sempre sobre overlay escuro, texto sempre branco */}
       <section
         className="relative w-full px-4 pt-10 pb-16 md:pt-16 md:pb-24 bg-cover bg-center"
         style={{ backgroundImage: `url(${bgHome})` }}
@@ -49,10 +50,10 @@ export function Home() {
 
         <div className="container relative mx-auto text-center mb-12 z-10">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white drop-shadow-md">
-            Atendemos por: <span className="text-green-500">Agendamento e Ordem de chegada</span>.
+            Atendemos por: <span className="text-blue-400">Agendamento e Ordem de chegada</span>.
           </h2>
 
-          {/* Localização, Contato e Pagamento - Layout Ajustado */}
+          {/* Localização, Contato e Pagamento */}
           <div className="flex flex-col items-center justify-center gap-4 text-base md:text-lg font-medium text-white mb-10 bg-zinc-900/60 backdrop-blur-md w-fit mx-auto px-6 py-5 rounded-2xl border border-white/10 shadow-xl">
 
             {/* Linha 1: Links interativos */}
@@ -61,7 +62,7 @@ export function Home() {
                 href="https://maps.google.com/?q=Rua+Atucuri+608+-+Tatuapé+-+São+Paulo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
               >
                 📍 Rua Atucuri 608 - Tatuapé
               </a>
@@ -69,10 +70,10 @@ export function Home() {
               <span className="hidden md:block text-zinc-500">|</span>
 
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={`https://wa.me/${whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
               >
                 📞 (11) 96109-1591
               </a>
@@ -83,14 +84,14 @@ export function Home() {
                 href="https://www.instagram.com/jcar_leste/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-green-400 transition-colors"
+                className="flex items-center gap-2 hover:text-blue-400 transition-colors"
               >
-              <img src={instaIcon} alt="instagram_icon" className="h-4 w-4 shrink-0 object-contain opacity-70"/> 
-              @jcar_leste
+                <img src={instaIcon} alt="instagram_icon" className="h-4 w-4 shrink-0 object-contain opacity-70" />
+                @jcar_leste
               </a>
             </div>
 
-            {/* Linha 2: Pagamento (Separado por uma linha sutil) */}
+            {/* Linha 2: Pagamento */}
             <div className="flex items-center justify-center w-full pt-3 mt-1 border-t border-white/10 text-sm md:text-base text-zinc-300">
               <span className="flex items-center gap-2 text-center">
                 💳 Formas de pagamento: Pix, débito e cartão de crédito
@@ -98,11 +99,12 @@ export function Home() {
             </div>
           </div>
 
+          {/* CTA principal — botão primário com bg preenchido, mantém azul */}
           <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, Jcar! Vi o site e gostaria de agendar uma avaliação.")}`}
+            href={`https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá, Jcar! Vi o site e gostaria de agendar uma avaliação.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-10 py-5 bg-green-500 hover:bg-green-600 text-white text-xl font-bold rounded-lg transition-transform hover:scale-105 shadow-xl"
+            className="inline-flex items-center gap-2 px-10 py-5 bg-blue-500 hover:bg-blue-600 text-white text-xl font-bold rounded-lg transition-transform hover:scale-105 shadow-xl"
           >
             <MessageCircle className="h-6 w-6" />
             Agendar via WhatsApp
@@ -110,20 +112,22 @@ export function Home() {
         </div>
       </section>
 
-      <div className="bg-zinc-900 dark:bg-zinc-950 text-white py-10 px-4">
+      {/* Estatísticas — fundo escuro no dark, claro no light */}
+      <div className="bg-zinc-100 dark:bg-zinc-950 py-10 px-4">
         <div className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {stats.map((s, i) => (
             <div key={i} className="flex flex-col items-center gap-1">
-              <span className="text-3xl md:text-4xl font-extrabold text-green-400">{s.value}</span>
-              <span className="text-sm text-zinc-400 font-medium">{s.label}</span>
+              <span className="text-3xl md:text-4xl font-extrabold text-blue-600 dark:text-blue-400">{s.value}</span>
+              <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">{s.label}</span>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Seção Quiz */}
       <section>
-        <p className="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-8 drop-shadow">
-          Para um diagnostico rápido que pode facilitar seu agendamento, responda o quiz abaixo:
+        <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto mb-8 drop-shadow">
+          Para um diagnóstico rápido que pode facilitar seu agendamento, responda o quiz abaixo:
         </p>
 
         <DiagnosticQuiz />
@@ -132,23 +136,27 @@ export function Home() {
       {/* Serviços Rápidos (Atalhos) */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex flex-col items-center text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">Serviços Prestados</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-zinc-900 dark:text-zinc-100">Serviços Prestados</h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6">Clique para ver detalhes e sintomas de cada manutenção.</p>
 
-          <Link to="/servicos" onClick={() => window.scrollTo(0, 0)} className="text-green-600 dark:text-green-500 hover:text-green-700 font-bold text-lg flex items-center gap-2">
+          <Link
+            to="/servicos"
+            onClick={() => window.scrollTo(0, 0)}
+            className="text-blue-600 dark:text-blue-500 hover:text-red-600 dark:hover:text-red-500 font-bold text-lg flex items-center gap-2 transition-colors"
+          >
             Ver todos os serviços <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
 
-        {/* Grid de 2 colunas travado nos 4 primeiros itens (.slice(0,4)) */}
+        {/* Grid de serviços */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {catalogData.slice(0, 6).map((servico) => (
             <Link
               key={servico.id}
               to={`/servicos#${servico.id}`}
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-xl hover:border-green-500 hover:shadow-lg transition-all group cursor-pointer"
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-xl hover:border-blue-500 hover:shadow-lg transition-all group cursor-pointer"
             >
-              <h3 className="font-bold text-2xl mb-3 group-hover:text-green-500 transition-colors">{servico.titulo}</h3>
+              <h3 className="font-bold text-2xl mb-3 text-zinc-900 dark:text-zinc-100 group-hover:text-blue-500 transition-colors">{servico.titulo}</h3>
               <p className="text-zinc-600 dark:text-zinc-400 line-clamp-2">
                 {servico.sintomaComum}
               </p>
@@ -158,14 +166,14 @@ export function Home() {
       </section>
 
       {/* Autoridade e Marcas */}
-      <section className="py-20 bg-zinc-900 text-white overflow-hidden">
+      <section className="py-20 bg-zinc-200 dark:bg-zinc-900 text-zinc-900 dark:text-white overflow-hidden">
         <div className="container mx-auto px-4 text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold">30+ Anos de Experiência</h1>
-          <p className="text-xl text-zinc-400 mt-4">Especialistas nas melhores montadoras do mercado</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-zinc-800 dark:text-white">30+ Anos de Experiência</h1>
+          <p className="text-xl text-zinc-500 dark:text-zinc-400 mt-4">Especialistas nas melhores montadoras do mercado</p>
         </div>
 
         {/* Carrossel de Imagens */}
-        <div className="relative flex w-full overflow-hidden bg-zinc-800 py-8">
+        <div className="relative flex w-full overflow-hidden bg-zinc-300 dark:bg-zinc-800 py-8">
           <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
             <div className="flex gap-20 px-10 items-center shrink-0">
               {MARCAS_LOGOS.map((logo, i) => (
@@ -184,14 +192,15 @@ export function Home() {
       {/* Prova Social (Google Reviews) */}
       <section className="container mx-auto px-4 py-8">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-2">O que dizem nossos clientes</h2>
+          <h2 className="text-3xl font-bold mb-2 text-zinc-900 dark:text-zinc-100">O que dizem nossos clientes</h2>
           <p className="text-zinc-600 dark:text-zinc-400 mb-4">Avaliações reais do Google</p>
 
+          {/* Link com bg leve — tratado como botão CTA, mantém cor azul */}
           <a
             href={GOOGLE_REVIEW_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium bg-green-50 hover:bg-green-100 px-6 py-2 rounded-full transition-colors"
+            className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-500 font-medium bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 px-6 py-2 rounded-full transition-colors"
           >
             Avalie-nos no Google <ArrowRight className="h-4 w-4" />
           </a>
@@ -220,23 +229,23 @@ export function Home() {
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div className="flex flex-col items-center gap-3">
             <div className="h-12 w-12 bg-white dark:bg-zinc-800 rounded-full flex items-center justify-center shadow-sm">
-              <ShieldCheck className="h-6 w-6 text-green-500" />
+              <ShieldCheck className="h-6 w-6 text-blue-500" />
             </div>
-            <h3 className="text-xl font-bold">Garantia de Serviço</h3>
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Garantia de Serviço</h3>
             <p className="text-zinc-600 dark:text-zinc-400">Peças originais e mão de obra com garantia de 90 dias.</p>
           </div>
           <div className="flex flex-col items-center gap-3">
             <div className="h-12 w-12 bg-white dark:bg-zinc-800 rounded-full flex items-center justify-center shadow-sm">
-              <Clock className="h-6 w-6 text-green-500" />
+              <Clock className="h-6 w-6 text-blue-500" />
             </div>
-            <h3 className="text-xl font-bold">Entrega no Prazo</h3>
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Entrega no Prazo</h3>
             <p className="text-zinc-600 dark:text-zinc-400">Seu tempo vale muito. Cumprimos rigorosamente os prazos acordados.</p>
           </div>
           <div className="flex flex-col items-center gap-3">
             <div className="h-12 w-12 bg-white dark:bg-zinc-800 rounded-full flex items-center justify-center shadow-sm">
-              <Wrench className="h-6 w-6 text-green-500" />
+              <Wrench className="h-6 w-6 text-blue-500" />
             </div>
-            <h3 className="text-xl font-bold">Diagnóstico Transparente</h3>
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Diagnóstico Transparente</h3>
             <p className="text-zinc-600 dark:text-zinc-400">Você aprova o orçamento antes, sem surpresas no final.</p>
           </div>
         </div>

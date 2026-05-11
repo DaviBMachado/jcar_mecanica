@@ -40,6 +40,7 @@ export function Services() {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      {/* HERO COM BUSCA — sempre sobre overlay escuro */}
       <div
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{
@@ -64,7 +65,7 @@ export function Services() {
             </div>
             <input
               type="text"
-              className="block w-full pl-12 pr-4 py-4 border border-transparent rounded-xl leading-5 bg-white/95 backdrop-blur-sm text-zinc-900 placeholder-zinc-500 focus:outline-none focus:ring-4 focus:ring-green-500/50 sm:text-base transition-all"
+              className="block w-full pl-12 pr-4 py-4 border border-transparent rounded-xl leading-5 bg-white/95 backdrop-blur-sm text-zinc-900 placeholder-zinc-500 focus:outline-none focus:ring-4 focus:ring-blue-500/50 sm:text-base transition-all"
               placeholder="Buscar serviço..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -79,20 +80,20 @@ export function Services() {
           {Object.entries(groupedServices).map(([categoria, servicosDaCategoria]) => (
             <div key={categoria} className="mb-12">
               <h2 className="text-2xl font-bold mb-6 text-zinc-800 dark:text-zinc-200 border-b border-zinc-200 dark:border-zinc-800 pb-3 flex items-center gap-2">
-                <span className="bg-green-500 w-2 h-6 rounded-full inline-block"></span>
+                {/* Indicador de categoria — azul */}
+                <span className="bg-blue-500 w-2 h-6 rounded-full inline-block"></span>
                 {categoria}
               </h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {servicosDaCategoria.map((service) => (
-                  /* CARD COM OVERFLOW HIDDEN, ID INJETADO E SCROLL-MT-32 */
                   <div
                     key={service.id}
                     id={service.id}
                     className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:shadow-md transition-shadow flex flex-col overflow-hidden scroll-mt-32"
                   >
 
-                    {/* PARTE SUPERIOR: Imagem ocupando toda a largura */}
+                    {/* PARTE SUPERIOR: Imagem */}
                     <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">
                       <img
                         src={`/src/assets/img/servicos/${service.id}.jpg`}
@@ -102,18 +103,17 @@ export function Services() {
                           const target = e.currentTarget;
                           if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
                             target.src = `/src/assets/img/servicos/${service.id}.jpeg`;
-                          }
-                          else if (!target.src.includes('unsplash')) {
+                          } else if (!target.src.includes('unsplash')) {
                             target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
                           }
                         }}
                       />
                     </div>
 
-                    {/* PARTE INFERIOR: Textos e Botão no Padrão Original */}
+                    {/* PARTE INFERIOR: Textos e Botão */}
                     <div className="p-6 flex flex-col flex-grow">
                       <div className="flex flex-col items-center text-center mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
-                        <h3 className="text-xl font-bold mt-2">{service.titulo}</h3>
+                        <h3 className="text-xl font-bold mt-2 text-zinc-900 dark:text-zinc-100">{service.titulo}</h3>
                       </div>
 
                       <div className="text-left flex-grow">
@@ -145,11 +145,12 @@ export function Services() {
                       </div>
 
                       <div className="mt-auto pt-4 w-full flex justify-center">
+                        {/* Link de ação sem bg preenchido → hover vermelho */}
                         <a
                           href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação para o serviço de ${service.titulo}.`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-green-600 dark:text-green-500 font-bold hover:underline text-sm text-center"
+                          className="text-blue-600 dark:text-blue-500 hover:text-red-600 dark:hover:text-red-500 font-bold text-sm text-center transition-colors"
                         >
                           Agendar serviço
                         </a>
@@ -164,21 +165,22 @@ export function Services() {
       ) : (
         <div className="text-center py-20 bg-zinc-50 dark:bg-zinc-900/50 rounded-xl border border-dashed border-zinc-300 dark:border-zinc-700 mb-20">
           <PenTool className="h-12 w-12 text-zinc-400 mx-auto mb-4" />
-          <h3 className="text-lg font-bold mb-2">Nenhum serviço encontrado</h3>
+          <h3 className="text-lg font-bold mb-2 text-zinc-900 dark:text-zinc-100">Nenhum serviço encontrado</h3>
           <p className="text-zinc-500">Não achamos nenhum resultado para "{searchQuery}".</p>
+          {/* Link sem bg → hover vermelho */}
           <button
             onClick={() => setSearchQuery('')}
-            className="mt-4 text-green-500 hover:underline font-medium"
+            className="mt-4 text-blue-500 dark:text-blue-400 hover:text-red-600 dark:hover:text-red-500 font-medium transition-colors"
           >
             Limpar busca
           </button>
         </div>
       )}
 
-      {/* SEÇÃO: NOSSA ESTRUTURA (GALERIA DE IMAGENS MAIOR) */}
+      {/* SEÇÃO: NOSSA ESTRUTURA */}
       <section className="mb-20">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Nossa Estrutura e Trabalho</h2>
+          <h2 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">Nossa Estrutura e Trabalho</h2>
           <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Tratamos o seu veículo com o máximo de cuidado. Veja um pouco do nosso dia a dia e da nossa paixão por mecânica automotiva.
           </p>
@@ -199,23 +201,24 @@ export function Services() {
       {/* SEÇÃO: DIFERENCIAIS */}
       <section className="mb-20">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Diferenciais</h2>
+          <h2 className="text-3xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">Diferenciais</h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {diferenciais.map((diferencial, index) => (
             <div key={index} className="flex items-center justify-center text-center gap-3 bg-zinc-50 dark:bg-zinc-900 p-4 rounded-lg border border-zinc-200 dark:border-zinc-800">
-              <CheckCircle className="h-5 w-5 text-green-500 shrink-0" />
+              <CheckCircle className="h-5 w-5 text-blue-500 shrink-0" />
               <span className="font-medium text-zinc-800 dark:text-zinc-200">{diferencial}</span>
             </div>
           ))}
         </div>
 
+        {/* Botão CTA primário com bg preenchido — mantém azul */}
         <div className="text-center mt-8">
           <a
             href={`https://wa.me/${whatsapp}?text=Olá! Gostaria de fazer um agendamento personalizado.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors shadow-lg"
           >
             Fazer Agendamento Personalizado
           </a>
@@ -223,14 +226,14 @@ export function Services() {
       </section>
 
       {/* SEÇÃO: GARANTIA */}
-      <section className="bg-zinc-900 dark:bg-zinc-800 text-white rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-6 shadow-xl">
-        <div className="bg-zinc-800 dark:bg-zinc-700 p-4 rounded-full flex-shrink-0">
-          <ShieldCheck className="h-12 w-12 text-green-400" />
+      <section className="bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-6 shadow-xl border border-zinc-200 dark:border-zinc-800">
+        <div className="bg-zinc-200 dark:bg-zinc-800 p-4 rounded-full flex-shrink-0">
+          <ShieldCheck className="h-12 w-12 text-blue-600 dark:text-blue-400" />
         </div>
         <div>
-          <h2 className="text-3xl font-bold mb-2">Garantia</h2>
-          <p className="text-zinc-300 text-lg">
-            Todos os nossos serviços contam com <span className="font-bold text-green-400">90 dias de garantia</span>.
+          <h2 className="text-3xl font-bold mb-2 text-zinc-900 dark:text-white">Garantia</h2>
+          <p className="text-zinc-600 dark:text-zinc-300 text-lg">
+            Todos os nossos serviços contam com <span className="font-bold text-blue-600 dark:text-blue-400">90 dias de garantia</span>.
           </p>
         </div>
       </section>

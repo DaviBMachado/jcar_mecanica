@@ -1,11 +1,23 @@
+import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { WhatsAppFAB } from '../components/WhatsAppFAB';
 import { SEO } from '../components/SEO';
 import config from '../data/config.json';
+import { useThemeStore } from '../store/useThemeStore';
 
 export function RootLayout() {
+  const { theme } = useThemeStore();
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 font-sans">
       <SEO 
@@ -14,7 +26,6 @@ export function RootLayout() {
       />
       <Header />
       
-      {/* O main com flex-1 empurra o Footer sempre para o final da tela */}
       <main className="flex-1 flex flex-col">
         <Outlet />
       </main>
