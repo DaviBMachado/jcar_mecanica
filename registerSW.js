@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/jcar_mecanica/sw.js', { scope: '/jcar_mecanica/' })})}
