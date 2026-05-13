@@ -29,7 +29,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-3 hover:text-red-600 dark:hover:text-red-500 transition-colors">
               <Mail className="h-4 w-4 text-blue-500 shrink-0" />
-              <span className="break-all">contatojcarmecanica@gmail.com.br</span>
+              <span className="break-all">mecanicajcar8@gmail.com</span>
             </li>
             <li className="flex items-start gap-3 hover:text-red-600 dark:hover:text-red-500 transition-colors">
               <MapPin className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />

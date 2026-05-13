@@ -142,10 +142,10 @@ export function About() {
             </h2>
             <div className="space-y-4 text-zinc-600 dark:text-zinc-300 leading-relaxed">
               <p>
-                A Jcar nasceu com um propósito claro: mudar a visão de que mecânica precisa ser algo complicado. Nossa missão sempre foi entregar confiança e segurança para você e sua família.
+                A Jcar nasceu com um propósito claro: mudar a visão de que mecânica precisa ser algo complicado. Nossa missão sempre foi entregar confiança, transparência e segurança para você e sua família.
               </p>
               <p>
-                Sabemos que cada carro carrega uma história. Um Corsa Wind 97, por exemplo, que passou por três oficinas sem solução chegou até nós. Com diagnóstico preciso e cuidado artesanal, devolvemos a vida ao motor e o sorriso no rosto do dono. É essa dedicação que aplicamos em cada parafuso, de carros populares a importados de alto padrão.
+                Acreditamos que um bom atendimento vai muito além de consertar veículos. Por isso, trabalhamos com dedicação, honestidade e atenção em cada detalhe, oferecendo um serviço de qualidade e construindo relações duradouras com nossos clientes. Aqui, cada pessoa é atendida com respeito, clareza e o compromisso de encontrar a melhor solução para o seu veículo.
               </p>
               <p>
                 Aqui você sempre sabe o que está sendo feito, por quê, e quanto vai custar. Antes de começar.
@@ -157,7 +157,7 @@ export function About() {
             <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-8 text-white shadow-2xl">
               <Star className="h-10 w-10 mb-4 text-blue-200" />
               <blockquote className="text-xl font-semibold leading-snug mb-4">
-                "Não consertamos só carros — devolvemos segurança para quem você ama."
+                "Não consertamos só carros devolvemos segurança para quem você ama."
               </blockquote>
               <p className="text-blue-200 text-sm font-medium uppercase tracking-wider">
                 — Jefferson, Fundador
@@ -240,7 +240,11 @@ export function About() {
                 Conheça Jefferson
               </h2>
               <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-prose">
-                Um pouco da sua história, experiência, etc.
+                Com mais de 30 anos de experiência no ramo automotivo, Jefferson construiu sua trajetória baseada em dedicação, confiança e paixão pelo que faz. Ao longo dos anos, se tornou referência pelo atendimento transparente, pela atenção aos detalhes e pelo compromisso em entregar sempre o melhor serviço para cada cliente.
+
+                Antes de fundar a Jcar, Jefferson já atuava há 7 anos no mesmo endereço onde hoje está localizada a oficina. Depois de conquistar a confiança da comunidade e construir uma relação sólida com seus clientes, realizou o sonho de assumir o próprio espaço e transformar o local em uma oficina com identidade própria, atendimento humanizado e foco total na qualidade.
+
+                Hoje, a Jcar carrega não apenas experiência técnica, mas também a história de alguém que dedicou a vida à profissão e acredita que confiança é a base de qualquer serviço bem feito.
               </p>
               <div className="flex flex-wrap gap-3 mt-2">
                 {['Especialista em Injeção Eletrônica', 'Importados & Populares', 'Diagnóstico Avançado'].map((tag) => (
@@ -318,7 +322,7 @@ export function About() {
             </p>
 
             <a
-              href="https://wa.me/5511956860202?text=Olá! Gostaria de agendar uma avaliação para o meu veículo."
+              href="https://wa.me/5511961091591?text=Olá! Gostaria de agendar uma avaliação para o meu veículo."
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 font-bold bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-xl transition-colors inline-flex items-center justify-center gap-3 text-lg"
