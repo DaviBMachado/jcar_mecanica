@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/jcar_mecanica/',
+  base: '/',
   plugins: [react(),
   VitePWA({
     registerType: 'autoUpdate',
