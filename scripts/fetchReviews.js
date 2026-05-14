@@ -56,14 +56,45 @@ async function fetchGoogleReviews() {
 
 
 function criarFallback() {
-  const fallbackData = [
-    {
-      author_name: "Cliente Teste",
-      rating: 5,
-      text: "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
-      relative_time_description: "há uma semana"
-    }
-  ];
+  const fallbackData = 
+  [
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  },
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  },
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  },
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  },
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  },
+  {
+    "author_name": "Cliente Teste",
+    "rating": 5,
+    "text": "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
+    "relative_time_description": "há uma semana"
+  }
+];
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(fallbackData, null, 2));
   console.log('Arquivo de fallback (reviews.json) criado para desenvolvimento.');
 }
