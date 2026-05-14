@@ -3,10 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
 import config from '../data/config.json';
-
-const getImageUrl = (path: string) => {
-  return new URL(path, import.meta.url).href;
-};
+import { getPublicImage } from '../libs/imageUtils';
 
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
@@ -47,7 +44,7 @@ export function Services() {
       <div
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{
-          backgroundImage: `url(${getImageUrl('../assets/img/serviços.jpeg')})`,
+          backgroundImage: `url(${getPublicImage('images/serviços.jpeg')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -95,14 +92,14 @@ export function Services() {
                   >
                     <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">
                       <img
-                        src={getImageUrl(`../assets/img/servicos/${service.id}.jpg`)}
+                        src={getPublicImage(`images/servicos/${service.id}.jpg`)}
                         alt={service.titulo}
                         loading="lazy"
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           const target = e.currentTarget as HTMLImageElement;
                           if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
-                            target.src = getImageUrl(`../assets/img/servicos/${service.id}.jpeg`);
+                            target.src = getPublicImage(`images/servicos/${service.id}.jpeg`);
                           } else if (!target.src.includes('unsplash')) {
                             target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
                           }
@@ -183,13 +180,13 @@ export function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src={getImageUrl('../assets/img/servicos_v2.jpeg')} loading="lazy" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getPublicImage('images/servicos_v2.jpeg')} loading="lazy" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src={getImageUrl('../assets/img/servicos_v4.jpeg')} loading="lazy" alt="Mecânico retirando motor do carro" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getPublicImage('images/servicos_v4.jpeg')} loading="lazy" alt="Mecânico retirando motor do carro" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src={getImageUrl('../assets/img/servicos_v3.jpeg')} loading="lazy" alt="Motor limpo e retificado" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getPublicImage('images/servicos_v3.jpeg')} loading="lazy" alt="Motor limpo e retificado" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
         </div>
       </section>

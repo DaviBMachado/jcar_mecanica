@@ -1,21 +1,5 @@
-import logo from '../assets/img/logos_ngc/logo_limpa.png';
-import fotoDono from '../assets/img/perfil_dono.jpeg';
-import {
-  Target,
-  Eye,
-  Heart,
-  CheckCircle,
-  ShieldCheck,
-  Wrench,
-  Clock,
-  Star,
-  Users,
-  Award,
-  ThumbsUp,
-  Zap,
-  Leaf,
-  HandshakeIcon,
-} from 'lucide-react';
+import { getPublicImage } from '../libs/imageUtils';
+import { Target, Eye, Heart, CheckCircle, ShieldCheck, Wrench, Clock, Star, Users, Award, ThumbsUp, Zap, Leaf, HandshakeIcon } from 'lucide-react';
 
 const mvv = [
   {
@@ -97,7 +81,7 @@ export function About() {
       <div
         className="relative flex flex-col items-center justify-center py-28 px-6 text-center overflow-hidden"
         style={{
-          backgroundImage: `url('/src/assets/img/serviços.jpeg')`,
+          backgroundImage: `url('${getPublicImage('images/serviços.jpeg')}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -106,7 +90,7 @@ export function About() {
 
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
           <img
-            src={logo}
+            src={getPublicImage('images/logos_ngc/logo_limpa.png')}
             alt="Logo Jcar Mecânica"
             className="h-24 w-auto object-contain mb-6 drop-shadow-2xl"
           />
@@ -224,10 +208,10 @@ export function About() {
         </section>
 
         <section className="bg-white dark:bg-zinc-950 rounded-3xl overflow-hidden shadow-2xl border border-zinc-200 dark:border-zinc-800">
-          <div className="flex flex-col md:flex-row items-center md:items-stretch">
+         <div className="flex flex-col md:flex-row items-center md:items-stretch">
             <div className="md:w-72 shrink-0 flex items-center justify-center p-8 md:p-0 bg-zinc-50 dark:bg-zinc-900">
               <img
-                src={fotoDono}
+                src={getPublicImage('images/perfil_dono.jpeg')}
                 alt="Jefferson, fundador da Jcar"
                 className="w-48 h-48 md:w-full md:h-full object-cover rounded-2xl md:rounded-none shadow-xl"
               />

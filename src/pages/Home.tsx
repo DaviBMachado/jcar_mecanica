@@ -5,27 +5,23 @@ import reviewsData from '../data/reviews.json';
 import catalogData from '../data/catalog.json';
 import config from '../data/config.json';
 
-import bgHome from '../assets/img/home_main.jpeg';
-
-import audiLogo from '../assets/img/logos_exp/audi_logo.png';
-import bmwLogo from '../assets/img/logos_exp/bmw_logo.png';
-import fordLogo from '../assets/img/logos_exp/ford_logo.png';
-import hondaLogo from '../assets/img/logos_exp/honda_logo.png';
-import hyundaiLogo from '../assets/img/logos_exp/hyundai_logo.png';
-import jaguarLogo from '../assets/img/logos_exp/jaguar_png.png';
-import kiaLogo from '../assets/img/logos_exp/kia_png.png';
-import landHoverLogo from '../assets/img/logos_exp/landHover_png.png';
-import mazdaLogo from '../assets/img/logos_exp/mazda_logo.png';
-import mercedesLogo from '../assets/img/logos_exp/mercedes_logo.png';
-import renautLogo from '../assets/img/logos_exp/renaut_logo.png';
-import subaruLogo from '../assets/img/logos_exp/subaru_png.png';
-import toyotaLogo from '../assets/img/logos_exp/toyota_logo.png';
-import volkswagemLogo from '../assets/img/logos_exp/volkswagem_logo.png';
-import instaIcon from '../assets/img/logos_ngc/Instagram_icon.png';
+import { getPublicImage } from '../libs/imageUtils'
 
 const MARCAS_LOGOS = [
-  audiLogo, bmwLogo, fordLogo, hondaLogo, hyundaiLogo, jaguarLogo, kiaLogo,
-  landHoverLogo, mazdaLogo, mercedesLogo, renautLogo, subaruLogo, toyotaLogo, volkswagemLogo
+  getPublicImage('images/logos_exp/audi_logo.png'),
+  getPublicImage('images/logos_exp/bmw_logo.png'),
+  getPublicImage('images/logos_exp/ford_logo.png'),
+  getPublicImage('images/logos_exp/honda_logo.png'),
+  getPublicImage('images/logos_exp/hyundai_logo.png'),
+  getPublicImage('images/logos_exp/jaguar_png.png'),
+  getPublicImage('images/logos_exp/kia_png.png'),
+  getPublicImage('images/logos_exp/landHover_png.png'),
+  getPublicImage('images/logos_exp/mazda_logo.png'),
+  getPublicImage('images/logos_exp/mercedes_logo.png'),
+  getPublicImage('images/logos_exp/renaut_logo.png'),
+  getPublicImage('images/logos_exp/subaru_png.png'),
+  getPublicImage('images/logos_exp/toyota_logo.png'),
+  getPublicImage('images/logos_exp/volkswagem_logo.png')
 ];
 
 const { whatsapp } = config.contato;
@@ -42,7 +38,7 @@ export function Home() {
     <div className="flex flex-col gap-16 pb-16 overflow-hidden">
       <section
         className="relative w-full px-4 pt-10 pb-16 md:pt-16 md:pb-24 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgHome})` }}
+        style={{ backgroundImage: `url(${getPublicImage('images/home_main.jpeg')})` }}
       >
         <div className="absolute inset-0 bg-black/75 z-0"></div>
 
@@ -62,7 +58,7 @@ export function Home() {
               </a>
               <span className="hidden md:block text-zinc-500">|</span>
               <a href="https://www.instagram.com/jcar_leste/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-400 transition-colors">
-                <img src={instaIcon} alt="instagram_icon" className="h-4 w-4 shrink-0 object-contain opacity-70" />
+                <img src={getPublicImage('images/logos_ngc/Instagram_icon.png')} alt="instagram_icon" className="h-4 w-4 shrink-0 object-contain opacity-70" />
                 @jcar_leste
               </a>
             </div>

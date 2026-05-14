@@ -56,14 +56,45 @@ async function fetchGoogleReviews() {
 
 
 function criarFallback() {
-  const fallbackData = [
-    {
-      author_name: "Cliente Teste",
-      rating: 5,
-      text: "Oficina excelente! Resolveram o problema de injeção do meu carro super rápido.",
-      relative_time_description: "há uma semana"
-    }
-  ];
+  const fallbackData = 
+[
+  {
+    "author_name": "João Silva",
+    "rating": 5,
+    "text": "Atendimento nota 10. O Jefferson me explicou tudo que precisava ser feito no motor e não empurrou serviços desnecessários. Recomendo muito a transparência deles!",
+    "relative_time_description": "há 2 semanas"
+  },
+  {
+    "author_name": "Marcos Oliveira",
+    "rating": 5,
+    "text": "Levei minha BMW para revisar a suspensão e fiquei impressionado com o cuidado da equipe. Preço justo, equipamentos de ponta e serviço impecável.",
+    "relative_time_description": "há 1 mês"
+  },
+  {
+    "author_name": "Ana Costa",
+    "rating": 4,
+    "text": "Ótima oficina, pessoal muito honesto e competente. Só demorou um pouquinho mais que o previsto por causa do atraso da transportadora na entrega de uma peça, mas o carro ficou perfeito.",
+    "relative_time_description": "há 3 meses"
+  },
+  {
+    "author_name": "Roberto Almeida",
+    "rating": 5,
+    "text": "Minha família toda traz os carros aqui há anos. O diferencial deles é a honestidade e a experiência de mais de 30 anos. Você deixa o carro de olhos fechados.",
+    "relative_time_description": "há 2 semanas"
+  },
+  {
+    "author_name": "Camila Rodrigues",
+    "rating": 5,
+    "text": "Tive um problema na injeção eletrônica que ninguém resolvia. Na Jcar eles passaram o scanner de diagnóstico, descobriram a falha na hora e resolveram. Salvou minha viagem!",
+    "relative_time_description": "há 4 dias"
+  },
+  {
+    "author_name": "Fernando Souza",
+    "rating": 5,
+    "text": "Excelente infraestrutura. O fato de terem me mandado o orçamento claro no WhatsApp antes de encostar no carro me passou muita segurança. Ganharam um cliente.",
+    "relative_time_description": "há 2 meses"
+  }
+];
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(fallbackData, null, 2));
   console.log('Arquivo de fallback (reviews.json) criado para desenvolvimento.');
 }

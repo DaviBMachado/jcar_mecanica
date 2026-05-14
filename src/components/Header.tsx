@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from "../assets/img/logos_ngc/logo_limpa.png";
+import { getPublicImage } from '../libs/imageUtils';
 import { useThemeStore } from '../store/useThemeStore';
 
 export function Header() {
@@ -19,7 +19,7 @@ export function Header() {
       <div className="container mx-auto flex h-24 items-center justify-between px-4 relative">
 
         <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center gap-3 font-bold text-xl tracking-tight text-zinc-900 dark:text-zinc-50">
-          <img src={logo} alt="JCAR Mecânica" className="h-24 w-24 object-contain" />
+          <img src={getPublicImage('images/logos_ngc/logo_limpa.png')} alt="JCAR Mecânica" className="h-24 w-24 object-contain" />
           <div className="hidden sm:flex flex-col leading-none">
             <span className="text-2xl">JCAR</span>
             <span className="text-base text-zinc-400 dark:text-zinc-300 font-medium mt-0">Mecânica Automotiva</span>

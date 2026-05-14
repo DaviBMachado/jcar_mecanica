@@ -1,6 +1,6 @@
 import { MapPin, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import instaIcon from '../assets/img/logos_ngc/Instagram_icon.png';
+import { getPublicImage } from '../libs/imageUtils';
 
 export function Footer() {
   return (
@@ -37,7 +37,7 @@ export function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <img
-                src={instaIcon}
+                src={getPublicImage('images/logos_ngc/Instagram_icon.png')}
                 alt="instagram_icon"
                 className="h-4 w-4 shrink-0 object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
