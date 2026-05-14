@@ -4,6 +4,10 @@ import { useCatalogStore } from '../store/useCatalogStore';
 import { Search, PenTool, AlertTriangle, CheckCircle, ShieldCheck } from 'lucide-react';
 import config from '../data/config.json';
 
+const getImageUrl = (path: string) => {
+  return new URL(path, import.meta.url).href;
+};
+
 export function Services() {
   const { searchQuery, setSearchQuery, filteredServices } = useCatalogStore();
   const services = filteredServices();
@@ -43,7 +47,7 @@ export function Services() {
       <div
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{
-          backgroundImage: `url('/src/assets/img/serviços.jpeg')`,
+          backgroundImage: `url(${getImageUrl('../assets/img/serviços.jpeg')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -91,13 +95,14 @@ export function Services() {
                   >
                     <div className="w-full h-56 bg-zinc-100 dark:bg-zinc-800">
                       <img
-                        src={`/src/assets/img/servicos/${service.id}.jpg`}
+                        src={getImageUrl(`../assets/img/servicos/${service.id}.jpg`)}
                         alt={service.titulo}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                         onError={(e) => {
-                          const target = e.currentTarget;
+                          const target = e.currentTarget as HTMLImageElement;
                           if (!target.src.includes('.jpeg') && !target.src.includes('unsplash')) {
-                            target.src = `/src/assets/img/servicos/${service.id}.jpeg`;
+                            target.src = getImageUrl(`../assets/img/servicos/${service.id}.jpeg`);
                           } else if (!target.src.includes('unsplash')) {
                             target.src = 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&q=80&w=600';
                           }
@@ -178,13 +183,13 @@ export function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src="/src/assets/img/servicos_v2.jpeg" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getImageUrl('../assets/img/servicos_v2.jpeg')} loading="lazy" alt="Mercedes com capô aberto" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src="/src/assets/img/servicos_v4.jpeg" alt="Mecânico retirando motor do carro" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getImageUrl('../assets/img/servicos_v4.jpeg')} loading="lazy" alt="Mecânico retirando motor do carro" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
           <div className="overflow-hidden rounded-xl shadow-md border border-zinc-200 dark:border-zinc-800 group">
-            <img src="/src/assets/img/servicos_v3.jpeg" alt="Motor limpo e retificado" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src={getImageUrl('../assets/img/servicos_v3.jpeg')} loading="lazy" alt="Motor limpo e retificado" className="w-full h-80 md:h-96 object-cover transition-transform duration-500 group-hover:scale-105" />
           </div>
         </div>
       </section>
@@ -204,7 +209,7 @@ export function Services() {
 
         <div className="text-center mt-8">
           <a
-            href={`https://wa.me/${whatsapp}?text=Olá! Gostaria de fazer um agendamento personalizado.`}
+            href={`https://wa.me/${whatsapp}?text=${encodeURIComponent('Olá! Gostaria de fazer um agendamento personalizado.')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-lg"
