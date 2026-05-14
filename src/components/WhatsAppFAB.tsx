@@ -1,10 +1,10 @@
 import { MessageCircle } from 'lucide-react';
+import config from '../data/config.json';
 
 export function WhatsAppFAB() {
-  const whatsappNumber = "5511961091591"; 
   const message = "Olá! Acessei o site e gostaria de agendar uma avaliação para o meu carro.";
-  
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  const { whatsapp } = config.contato;
+  const whatsappUrl = `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

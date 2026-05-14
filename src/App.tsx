@@ -1,5 +1,5 @@
+// src/App.tsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import { RootLayout } from './layouts/RootLayout';
 import { Home } from './pages/Home';
 import { Services } from './pages/Services';
@@ -9,7 +9,7 @@ import { TrabalheConosco } from './pages/TrabalheConosco';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/jcar_mecanica/">
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<RootLayout />}>

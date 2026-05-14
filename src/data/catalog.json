@@ -56,22 +56,6 @@
     "alerta": "Se a correia romper com o motor em funcionamento, as válvulas vão colidir com os pistões, exigindo a retífica completa e cara do motor."
   },
   {
-    "id": "alinhamento-balanceamento",
-    "categoria": "Suspensão",
-    "titulo": "Alinhamento e Balanceamento",
-    "sintomaComum": "O veículo 'puxa' para um dos lados em linha reta, o volante fica torto ou há trepidação na direção em altas velocidades.",
-    "causaProvavel": "Impactos em buracos severos, desgaste natural de peças da suspensão ou troca recente de pneus.",
-    "alerta": "Se ignorar, os pneus sofrerão um desgaste irregular e rápido, além de comprometer a estabilidade e a segurança nas curvas."
-  },
-  {
-    "id": "escapamento",
-    "categoria": "Exaustão",
-    "titulo": "Reparo e Troca de Escapamento",
-    "sintomaComum": "Aumento excessivo do barulho do motor ou cheiro forte de gases de escape dentro da cabine.",
-    "causaProvavel": "Silencioso traseiro ou intermediário furado por corrosão, ou juntas rompidas.",
-    "alerta": "Se ignorar, o veículo pode perder rendimento, aumentar o consumo e ser reprovado em vistorias de emissão de gases."
-  },
-  {
     "id": "cabecote",
     "categoria": "Motor",
     "titulo": "Retífica e Troca de Junta de Cabeçote",
