@@ -9,7 +9,7 @@ import { TrabalheConosco } from './pages/TrabalheConosco';
 
 function App() {
   return (
-    <BrowserRouter basename="/jcar_mecanica/">
+    <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<RootLayout />}>
