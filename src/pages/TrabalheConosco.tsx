@@ -1,6 +1,6 @@
 import { Briefcase, Wrench, GraduationCap, Users, FileText, CheckCircle2, Mail, MessageCircle } from 'lucide-react';
 import config from '../data/config.json';
-import bgTrabalhe from '../assets/img/home_main.jpeg';
+import { getPublicImage } from '../libs/imageUtils';
 
 export function TrabalheConosco() {
   const { email, whatsapp } = config.contato;
@@ -10,7 +10,7 @@ export function TrabalheConosco() {
       <div
         className="relative mb-16 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center justify-center py-24 px-6 text-center"
         style={{
-          backgroundImage: `url(${bgTrabalhe})`,
+          backgroundImage: `url(${getPublicImage('images/home_main.jpeg')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
