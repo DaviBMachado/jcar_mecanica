@@ -19,10 +19,5 @@ export default defineConfig({
       ]
     }
   })
-  ],
-  // @ts-ignore
-  ssgOptions: {
-    script: 'async',
-    formatting: 'minify',
-  },
+  ]
 })

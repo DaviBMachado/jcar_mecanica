@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "vite",
     "prebuild": "node scripts/fetchReviews.js",
-    "build": "vite build && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
-    "ssg:build": "vite-ssg build && node -e \"require('fs').copyFileSync('dist/index.html', 'dist/404.html')\"",
+    "build": "vite build && node scripts/postbuild.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "fetch-data": "node scripts/fetchReviews.js",
@@ -44,7 +43,6 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
-    "vite-plugin-pwa": "^1.3.0",
-    "vite-plugin-ssg": "^0.1.0"
+    "vite-plugin-pwa": "^1.3.0"
   }
 }
