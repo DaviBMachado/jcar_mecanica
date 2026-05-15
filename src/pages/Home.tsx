@@ -25,7 +25,7 @@ const MARCAS_LOGOS = [
 ];
 
 const { whatsapp } = config.contato;
-const GOOGLE_REVIEW_LINK = "https://share.google/bLuiuuc01qPdZLvr3";
+const GOOGLE_REVIEW_LINK = "https://g.page/r/CVRTY7K01k84EAI/review";
 const stats = [
   { value: '30', label: 'Anos de experiência' },
   { value: '500+', label: 'Clientes satisfeitos' },
@@ -178,7 +178,6 @@ export function Home() {
               <p className="text-zinc-700 dark:text-zinc-300 mb-6 italic">"{review.text}"</p>
               <div className="flex justify-between items-center text-sm">
                 <span className="font-bold text-zinc-900 dark:text-white">{review.author_name}</span>
-                <span className="text-zinc-500">{review.relative_time_description}</span>
               </div>
             </div>
           ))}
